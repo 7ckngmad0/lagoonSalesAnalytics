@@ -147,7 +147,7 @@ function renderTopItems(data) {
     const bestSellingList = document.getElementById('bestSellingList');
     bestSellingList.innerHTML = '';
     const bestSelling = data.best_selling_food;
-    const bestItems = Object.entries(bestSelling).slice(0, 5);
+    const bestItems = Object.entries(bestSelling).sort((a,b) => b[1] - a[1]).slice(0, 5); 
     bestItems.forEach(([item, qty], index) => {
         const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
         bestSellingList.innerHTML += `
@@ -162,12 +162,27 @@ function renderTopItems(data) {
     const highestEarningList = document.getElementById('highestEarningList');
     highestEarningList.innerHTML = '';
     const highestEarning = data.highest_earning_food;
-    const topEarning = Object.entries(highestEarning).slice(0, 5);
+    const topEarning = Object.entries(highestEarning).sort((a, b) => b[1] - a[1]).slice(0, 5);
     topEarning.forEach(([item, amount], index) => {
         const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
         highestEarningList.innerHTML += `
             <div class="d-flex justify-content-between mb-2">
                 <span>${badge}${item}</span>
+                <span class="fw-bold">${formatCurrency(amount)}</span>
+            </div>
+        `;
+    });
+
+    //Highest Day Sales 
+    const highestDaySale = document.getElementById('highestDaySale');
+    highestDaySale.innerHTML = '';
+    const highestDay = data.sales_by_day;
+    const topDay = Object.entries(highestDay).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    topDay.forEach(([day, amount], index) => {
+        const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
+        highestDaySale.innerHTML += `
+            <div class="d-flex justify-content-between mb-2">
+                <span>${badge}${day}</span>
                 <span class="fw-bold">${formatCurrency(amount)}</span>
             </div>
         `;
