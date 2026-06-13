@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')  # Use non-GUI backend to avoid threading issues
 import matplotlib.pyplot as plt
 import os
 from pathlib import Path

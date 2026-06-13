@@ -22,27 +22,50 @@
 
     <div class="container-fluid">
         <div class="row" style="min-height: 100vh;">
-            <!-- Sidebar -->
+            <!-- Sidebar Navigation -->
             <div class="col-md-3 bg-light border-end p-4">
-                <div class="card border-0 shadow-sm">
+                <!-- Data Upload Card -->
+                <div class="card border-0 shadow-sm mb-3">
                     <div class="card-header" style="background-color: #800000; color: white;">
-                        <h5 class="mb-0"><i class="bi bi-file-earmark-arrow-up"></i> Data Management</h5>
+                        <h6 class="mb-0"><i class="bi bi-file-earmark-arrow-up"></i> Load Raw Data</h6>
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <label for="fileInput" class="form-label fw-bold">Upload CSV File</label>
                             <input type="file" class="form-control" id="fileInput" accept=".csv">
                             <small class="text-muted">Max 16MB</small>
                         </div>
-                        <button class="btn btn-maroon w-100 mb-2" id="cleanBtn" disabled>
+                        <button class="btn btn-secondary w-100 btn-sm" id="sampleBtn">
+                            <i class="bi bi-database"></i> Load Sample Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation Menu -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header" style="background-color: #800000; color: white;">
+                        <h6 class="mb-0"><i class="bi bi-menu-button"></i> Navigation</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <button class="btn btn-outline-maroon w-100 text-start mb-2 py-2" id="cleanDataBtn" disabled>
                             <i class="bi bi-broom"></i> Clean Data
                         </button>
-                        <button class="btn btn-outline-maroon w-100 mb-2" id="downloadBtn" disabled>
-                            <i class="bi bi-download"></i> Download Cleaned
+                        <button class="btn btn-outline-maroon w-100 text-start mb-2 py-2" id="showDatasetInfoBtn" disabled>
+                            <i class="bi bi-info-circle"></i> Show Dataset Info
                         </button>
-                        <hr>
-                        <button class="btn btn-secondary w-100" id="sampleBtn">
-                            <i class="bi bi-database"></i> Load Sample Data
+                        <button class="btn btn-outline-maroon w-100 text-start mb-2 py-2" id="showRawDataBtn" disabled>
+                            <i class="bi bi-table"></i> Show Raw Data
+                        </button>
+                        <button class="btn btn-outline-maroon w-100 text-start mb-2 py-2" id="showCleanedDataBtn" disabled>
+                            <i class="bi bi-table"></i> Show Cleaned Data
+                        </button>
+                        <button class="btn btn-outline-maroon w-100 text-start mb-2 py-2" id="generateChartsBtn" disabled>
+                            <i class="bi bi-bar-chart"></i> Generate Charts
+                        </button>
+                        <button class="btn btn-outline-maroon w-100 text-start mb-2 py-2" id="showChartsBtn" disabled>
+                            <i class="bi bi-graph-up"></i> Show Charts
+                        </button>
+                        <button class="btn btn-outline-maroon w-100 text-start py-2" id="downloadBtn" disabled>
+                            <i class="bi bi-download"></i> Download Cleaned
                         </button>
                     </div>
                 </div>
@@ -84,6 +107,103 @@
 
                 <!-- Alerts -->
                 <div id="alertContainer"></div>
+
+                <!-- Dataset Info Section -->
+                <div id="datasetInfoContainer" style="display:none;">
+                    <h4 class="mb-3"><i class="bi bi-file-earmark-text"></i> Dataset Information</h4>
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card border-left-maroon shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">Total Rows</h6>
+                                    <h3 id="datasetTotalRows" class="maroon-text">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-left-gold shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">Total Columns</h6>
+                                    <h3 id="datasetTotalCols" class="gold-text">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-left-info shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">File Name</h6>
+                                    <h6 id="datasetFileName" class="text-info">-</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-left-success shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">Memory Usage</h6>
+                                    <h6 id="datasetMemory" class="text-success">-</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header" style="background-color: #f8f9fa;">
+                            <h6 class="mb-0">Column Details</h6>
+                        </div>
+                        <div class="card-body">
+                            <div id="columnDetailsContainer" style="max-height: 400px; overflow-y: auto;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Raw Data Section -->
+                <div id="rawDataContainer" style="display:none;">
+                    <h4 class="mb-3"><i class="bi bi-table"></i> Raw Data</h4>
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header" style="background-color: #f8f9fa;">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="mb-0" id="rawDataRowCount">Rows: 0</h6>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" id="rawDataSearch" class="form-control form-control-sm" placeholder="Search..." style="width: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="rawDataTable" style="max-height: 600px; overflow: auto;">
+                                <table class="table table-striped table-hover table-sm">
+                                    <thead id="rawDataHead" style="position: sticky; top: 0; background: white;"></thead>
+                                    <tbody id="rawDataBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cleaned Data Section -->
+                <div id="cleanedDataContainer" style="display:none;">
+                    <h4 class="mb-3"><i class="bi bi-table"></i> Cleaned Data</h4>
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header" style="background-color: #f8f9fa;">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h6 class="mb-0" id="cleanedDataRowCount">Rows: 0</h6>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" id="cleanedDataSearch" class="form-control form-control-sm" placeholder="Search..." style="width: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="cleanedDataTable" style="max-height: 600px; overflow: auto;">
+                                <table class="table table-striped table-hover table-sm">
+                                    <thead id="cleanedDataHead" style="position: sticky; top: 0; background: white;"></thead>
+                                    <tbody id="cleanedDataBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Key Metrics -->
                 <div id="metricsContainer" style="display:none;">

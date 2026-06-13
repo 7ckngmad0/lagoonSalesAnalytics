@@ -149,8 +149,6 @@ def get_chart_data():
         return jsonify(chart_files)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
 
 @app.route('/api/download-cleaned', methods=['GET'])
 def download_cleaned():
@@ -190,6 +188,88 @@ def get_sample_data():
             return jsonify({'success': True, 'data': info})
         else:
             return jsonify({'error': 'Sample data not found'}), 404
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/dataset-info', methods=['GET'])
+def get_dataset_info():
+    try:
+        df = current_data['cleaned_df'] if current_data['cleaned_df'] is not None else current_data['df']
+        
+        if df is None:
+            return jsonify({'error': 'No data loaded'}), 400
+        
+        # Get memory usage
+        memory_usage = df.memory_usage(deep=True).sum() / 1024 / 1024  # in MB
+        
+        # Get column information
+        column_info = {}
+        for col in df.columns:
+            column_info[col] = {
+                'type': str(df[col].dtype),
+                'non_null': int(df[col].notna().sum()),
+                'unique': int(df[col].nunique()),
+                'null_count': int(df[col].isna().sum())
+            }
+        
+        return jsonify({
+            'rows': len(df),
+            'columns': len(df.columns),
+            'file_name': current_data['file_name'],
+            'memory_usage': f'{memory_usage:.2f} MB',
+            'column_info': column_info
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/raw-data', methods=['GET'])
+def get_raw_data():
+    try:
+        if current_data['df'] is None:
+            return jsonify({'error': 'No raw data loaded'}), 400
+        
+        df = current_data['df']
+        # Limit to first 1000 rows for performance
+        data = df.head(1000).astype(str).to_dict('records')
+        columns = list(df.columns)
+        
+        return jsonify({
+            'data': data,
+            'columns': columns,
+            'total_rows': len(df)
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/cleaned-data', methods=['GET'])
+def get_cleaned_data():
+    try:
+        if current_data['cleaned_df'] is None:
+            return jsonify({'error': 'No cleaned data available'}), 400
+        
+        df = current_data['cleaned_df']
+        # Limit to first 1000 rows for performance
+        data = df.head(1000).astype(str).to_dict('records')
+        columns = list(df.columns)
+        
+        return jsonify({
+            'data': data,
+            'columns': columns,
+            'total_rows': len(df)
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/generate-charts', methods=['POST'])
+def generate_new_charts():
+    try:
+        if current_data['cleaned_df'] is None:
+            return jsonify({'error': 'No cleaned data available'}), 400
+        
+        # Generate charts
+        generate_charts(current_data['cleaned_df'])
+        
+        return jsonify({'success': True, 'message': 'Charts generated successfully'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

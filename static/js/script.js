@@ -42,7 +42,9 @@ document.getElementById('fileInput').addEventListener('change', async (e) => {
         document.getElementById('fileCols').textContent = data.data.columns;
         document.getElementById('fileInfoCard').style.display = 'block';
 
-        document.getElementById('cleanBtn').disabled = false;
+        document.getElementById('cleanDataBtn').disabled = false;
+        document.getElementById('showDatasetInfoBtn').disabled = false;
+        document.getElementById('showRawDataBtn').disabled = false;
         showAlert('File uploaded successfully!', 'success');
     } catch (error) {
         showAlert('Error uploading file: ' + error.message, 'danger');
@@ -50,7 +52,7 @@ document.getElementById('fileInput').addEventListener('change', async (e) => {
 });
 
 // Clean data handler
-document.getElementById('cleanBtn').addEventListener('click', async () => {
+document.getElementById('cleanDataBtn').addEventListener('click', async () => {
     try {
         document.getElementById('loadingSpinner').style.display = 'block';
         showAlert('Cleaning data...', 'info');
@@ -65,6 +67,8 @@ document.getElementById('cleanBtn').addEventListener('click', async () => {
         document.getElementById('removedRows').textContent = data.removed_rows.toLocaleString();
         document.getElementById('cleaningInfoCard').style.display = 'block';
         document.getElementById('downloadBtn').disabled = false;
+        document.getElementById('showCleanedDataBtn').disabled = false;
+        document.getElementById('generateChartsBtn').disabled = false;
 
         showAlert('Data cleaned successfully!', 'success');
         loadAnalysis();
@@ -207,7 +211,9 @@ document.getElementById('sampleBtn').addEventListener('click', async () => {
         document.getElementById('fileRows').textContent = data.data.rows.toLocaleString();
         document.getElementById('fileCols').textContent = data.data.columns;
         document.getElementById('fileInfoCard').style.display = 'block';
-        document.getElementById('cleanBtn').disabled = false;
+        document.getElementById('cleanDataBtn').disabled = false;
+        document.getElementById('showDatasetInfoBtn').disabled = false;
+        document.getElementById('showRawDataBtn').disabled = false;
 
         showAlert('Sample data loaded successfully! Click "Clean Data" to proceed.', 'success');
     } catch (error) {
@@ -216,3 +222,178 @@ document.getElementById('sampleBtn').addEventListener('click', async () => {
         document.getElementById('loadingSpinner').style.display = 'none';
     }
 });
+
+// Hide all main content sections
+function hideAllSections() {
+    document.getElementById('datasetInfoContainer').style.display = 'none';
+    document.getElementById('rawDataContainer').style.display = 'none';
+    document.getElementById('cleanedDataContainer').style.display = 'none';
+    document.getElementById('metricsContainer').style.display = 'none';
+    document.getElementById('chartsContainer').style.display = 'none';
+    document.getElementById('topItemsContainer').style.display = 'none';
+}
+
+// Show Dataset Info
+document.getElementById('showDatasetInfoBtn').addEventListener('click', async () => {
+    try {
+        document.getElementById('loadingSpinner').style.display = 'block';
+        hideAllSections();
+        
+        const response = await fetch('/api/dataset-info');
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+
+        // Update dataset info
+        document.getElementById('datasetTotalRows').textContent = data.rows.toLocaleString();
+        document.getElementById('datasetTotalCols').textContent = data.columns;
+        document.getElementById('datasetFileName').textContent = data.file_name;
+        document.getElementById('datasetMemory').textContent = data.memory_usage;
+
+        // Render column details
+        const columnDetails = document.getElementById('columnDetailsContainer');
+        columnDetails.innerHTML = '';
+        const cols = Object.entries(data.column_info);
+        cols.forEach(([colName, colInfo]) => {
+            columnDetails.innerHTML += `
+                <div class="mb-3 p-2 border rounded">
+                    <strong>${colName}</strong>
+                    <div class="small text-muted">
+                        Type: ${colInfo.type} | Non-null: ${colInfo.non_null} | Unique: ${colInfo.unique}
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('datasetInfoContainer').style.display = 'block';
+        showAlert('Dataset information loaded!', 'success');
+    } catch (error) {
+        showAlert('Error loading dataset info: ' + error.message, 'danger');
+    } finally {
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+});
+
+// Show Raw Data
+document.getElementById('showRawDataBtn').addEventListener('click', async () => {
+    try {
+        document.getElementById('loadingSpinner').style.display = 'block';
+        hideAllSections();
+        
+        const response = await fetch('/api/raw-data');
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+
+        renderDataTable('raw', data.data, data.columns);
+        document.getElementById('rawDataContainer').style.display = 'block';
+        document.getElementById('rawDataRowCount').textContent = `Rows: ${data.data.length.toLocaleString()}`;
+        showAlert('Raw data loaded!', 'success');
+    } catch (error) {
+        showAlert('Error loading raw data: ' + error.message, 'danger');
+    } finally {
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+});
+
+// Show Cleaned Data
+document.getElementById('showCleanedDataBtn').addEventListener('click', async () => {
+    try {
+        document.getElementById('loadingSpinner').style.display = 'block';
+        hideAllSections();
+        
+        const response = await fetch('/api/cleaned-data');
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+
+        renderDataTable('cleaned', data.data, data.columns);
+        document.getElementById('cleanedDataContainer').style.display = 'block';
+        document.getElementById('cleanedDataRowCount').textContent = `Rows: ${data.data.length.toLocaleString()}`;
+        showAlert('Cleaned data loaded!', 'success');
+    } catch (error) {
+        showAlert('Error loading cleaned data: ' + error.message, 'danger');
+    } finally {
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+});
+
+// Generate Charts
+document.getElementById('generateChartsBtn').addEventListener('click', async () => {
+    try {
+        document.getElementById('loadingSpinner').style.display = 'block';
+        showAlert('Generating charts...', 'info');
+
+        const response = await fetch('/api/generate-charts', { method: 'POST' });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+
+        showAlert('Charts generated successfully! Click "Show Charts" to view.', 'success');
+        document.getElementById('showChartsBtn').disabled = false;
+    } catch (error) {
+        showAlert('Error generating charts: ' + error.message, 'danger');
+    } finally {
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+});
+
+// Show Charts
+document.getElementById('showChartsBtn').addEventListener('click', async () => {
+    try {
+        document.getElementById('loadingSpinner').style.display = 'block';
+        hideAllSections();
+        
+        const response = await fetch('/api/chart-data');
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+
+        renderCharts(data);
+        document.getElementById('chartsContainer').style.display = 'block';
+        document.getElementById('topItemsContainer').style.display = 'block';
+        showAlert('Charts loaded!', 'success');
+    } catch (error) {
+        showAlert('Error loading charts: ' + error.message, 'danger');
+    } finally {
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+});
+
+// Render data table
+function renderDataTable(type, rows, columns) {
+    const headId = `${type}DataHead`;
+    const bodyId = `${type}DataBody`;
+    const searchId = `${type}DataSearch`;
+
+    const head = document.getElementById(headId);
+    const body = document.getElementById(bodyId);
+    const searchInput = document.getElementById(searchId);
+
+    // Create header
+    head.innerHTML = '<tr>' + columns.map(col => `<th>${col}</th>`).join('') + '</tr>';
+
+    // Function to render body with filter
+    function renderBody(filteredRows) {
+        body.innerHTML = '';
+        filteredRows.forEach(row => {
+            const cells = columns.map(col => {
+                let value = row[col];
+                if (typeof value === 'number') {
+                    value = value.toFixed(2);
+                }
+                return `<td>${value || '-'}</td>`;
+            }).join('');
+            body.innerHTML += `<tr>${cells}</tr>`;
+        });
+    }
+
+    renderBody(rows);
+
+    // Search functionality
+    searchInput.addEventListener('keyup', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filtered = rows.filter(row => {
+            return columns.some(col => {
+                const value = String(row[col]).toLowerCase();
+                return value.includes(query);
+            });
+        });
+        renderBody(filtered);
+    });
+}
