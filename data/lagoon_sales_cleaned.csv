@@ -1,0 +1,100 @@
+Transaction_ID,Date,Day,Time,Stall_Number,Food_Item,Food_Category,Quantity_Sold,Unit_Price,Total_Sales,Payment_Method,Customer_Type,Stock_Before,Stock_After
+A1,2026-01-12,Monday,12:00,1,Chicken Poppers,Meal,1,65,65,Cash,Student,120,119
+A2,2026-01-12,Monday,12:00,23,Chicken Poppers,Meal,2,65,130,Cash,Student,120,118
+A3,2026-02-14,Saturday,8:00,3,Caramel Macchiato,Beverage,2,30,60,Cash,Student,80,78
+A4,2026-05-08,Friday,9:00,4,Caramel Macchiato,Beverage,2,45,90,E-Wallet,Employee,80,78
+A5,2026-05-08,Friday,12:00,5,Chicken Poppers,Meal,2,65,130,E-Wallet,Student,150,148
+A6,2026-02-14,Saturday,7:45,5,Fewa Burger,Sandwich,2,35,70,Cash,Employee,53,51
+A7,2026-02-14,Saturday,9:00,6,Chicken Poppers,Meal,2,65,130,Cash,Employee,50,48
+A8,2026-05-13,Wednesday,12:00,22,Chicken Poppers,Meal,2,65,130,E-Wallet,Employee,50,48
+A9,2026-05-13,Wednesday,9:00,21,Chicken Poppers,Meal,2,65,130,E-Wallet,Student,50,48
+A10,2026-05-13,Wednesday,10:30,14,Caramel Macchiato,Beverage,1,30,30,E-Wallet,Student,13,12
+A11,2026-05-13,Wednesday,9:30,4,Chicken Poppers,Meal,4,65,260,Cash,Student,134,130
+A12,2026-01-31,Saturday,8:00,1,Chicken Poppers,Meal,3,65,195,Cash,Student,178,175
+A13,2026-04-22,Wednesday,10:00,9,Siomai Rice,Meal,4,65,260,Cash,Student,169,165
+A14,2026-04-22,Wednesday,11:00,9,Siomai Rice,Meal,4,65,260,E-Wallet,Student,165,161
+A15,2026-04-22,Wednesday,12:00,21,Fewa Burger,Sandwich,4,35,140,E-Wallet,Student,53,49
+A16,2026-04-22,Wednesday,9:45,12,Fewa Burger,Sandwich,4,35,140,Cash,Student,53,49
+A17,2026-04-22,Wednesday,8:20,4,Cheese Burger,Sandwich,4,35,140,Cash,Student,54,50
+A18,2026-04-22,Wednesday,10:15,24,Cheese Burger,Sandwich,4,35,140,Cash,Student,160,156
+A19,2026-04-22,Wednesday,11:15,29,Cheese Burger,Sandwich,4,35,140,E-Wallet,Employee,180,176
+A20,2026-06-01,Monday,12:30,4,Fewa Burger,Sandwich,4,35,140,E-Wallet,Employee,180,176
+A21,2026-06-01,Monday,9:35,12,Siomai Rice,Meal,3,65,195,Cash,Employee,190,187
+A22,2026-05-08,Friday,10:35,11,Fewa Burger,Street Food,3,25,75,Cash,Student,124,121
+A23,2026-05-08,Friday,11:35,20,Siomai Rice,Meal,3,65,195,Cash,Student,180,177
+A24,2026-05-08,Friday,8:10,22,Siomai Rice,Meal,3,65,195,E-Wallet,Student,180,177
+A25,2026-05-08,Friday,7:45,6,Veggie Balls,Street Food,3,25,75,E-Wallet,Student,180,177
+A26,2026-05-13,Wednesday,7:45,12,Veggie Balls,Street Food,2,25,50,Cash,Student,180,178
+A27,2026-05-13,Wednesday,7:45,14,Veggie Balls,Street Food,3,25,75,Cash,Student,180,177
+B1,2026-04-21,Tuesday,7:45,13,Veggie Balls,Street Food,2,25,50,Cash,Employee,180,178
+B2,2026-04-21,Tuesday,7:45,16,Veggie Balls,Street Food,3,25,75,E-Wallet,Employee,180,177
+B3,2026-04-21,Tuesday,12:15,16,Veggie Balls,Street Food,3,25,75,E-Wallet,Student,177,174
+B4,2026-04-21,Tuesday,7:45,16,Kwek-Kwek,Street Food,33,25,825,Cash,Employee,180,147
+B5,2026-04-21,Tuesday,7:45,16,Kwek-Kwek,Street Food,12,25,300,Cash,Student,147,135
+B6,2026-04-21,Tuesday,7:45,16,Kwek-Kwek,Street Food,4,25,100,Cash,Student,135,131
+B7,2026-04-22,Wednesday,7:45,4,Kwek-Kwek,Street Food,1,25,25,E-Wallet,Student,120,119
+B8,2026-04-22,Wednesday,12:45,9,Kwek-Kwek,Street Food,1,25,25,E-Wallet,Student,120,119
+B9,2026-05-13,Wednesday,3:15,12,Kwek-Kwek,Street Food,2,25,50,Cash,Student,102,100
+B10,2026-04-21,Tuesday,3:15,8,Veggie Balls,Street Food,2,25,50,Cash,Student,84,82
+B11,2026-04-21,Tuesday,3:15,6,Veggie Balls,Street Food,2,25,50,Cash,Student,66,64
+B12,2026-04-21,Tuesday,7:50,6,Siomai Rice,Meal,1,65,65,E-Wallet,Student,48,47
+B13,2026-04-21,Tuesday,3:15,5,Siomai Rice,Meal,2,65,130,E-Wallet,Student,30,28
+B14,2026-04-21,Tuesday,12:45,14,Siomai Rice,Meal,2,65,130,Cash,Student,150,148
+B15,2026-04-21,Tuesday,3:15,4,Siomai Rice,Meal,2,65,130,Cash,Student,150,148
+B16,2026-04-21,Tuesday,3:15,4,Siomai Rice,Meal,1,65,65,Cash,Student,148,147
+B17,2026-04-21,Tuesday,3:15,2,Siomai Rice,Meal,1,65,65,Cash,Student,150,149
+B18,2026-04-21,Tuesday,3:15,1,Siomai Rice,Meal,1,65,65,E-Wallet,Student,150,149
+B19,2026-04-21,Tuesday,7:50,24,Iced Coffee,Beverage,1,35,35,Cash,Student,150,149
+B20,2026-04-21,Tuesday,11:20,1,Sisig,Meal,1,65,65,Cash,Student,150,149
+B21,2026-04-21,Tuesday,12:20,14,Sisig,Meal,2,65,130,Cash,Student,150,148
+B22,2026-04-21,Tuesday,10:55,11,Chicken Poppers,Meal,2,65,130,E-Wallet,Employee,150,148
+B23,2026-04-21,Tuesday,11:55,21,Chicken Poppers,Meal,2,65,130,E-Wallet,Employee,129,127
+B24,2026-04-21,Tuesday,12:55,44,Chicken Poppers,Meal,2,65,130,Cash,Employee,129,127
+B25,2026-04-21,Tuesday,3:15,2,Chicken Poppers,Meal,2,65,130,Cash,Employee,123,121
+B26,2026-06-01,Wednesday,12:00,4,Siomai Rice,Meal,2,65,130,Cash,Student,125,123
+B27,2026-06-01,Wednesday,3:15,240,Gulaman,Beverage,2,15,30,E-Wallet,Employee,127,125
+C1,2026-06-01,Wednesday,3:15,11,Chicken Poppers,Meal,2,65,130,E-Wallet,Employee,129,127
+C2,2026-06-01,Wednesday,12:45,214,Siomai Rice,Meal,2,65,130,Cash,Student,131,129
+C3,2026-06-01,Wednesday,3:15,67,Siomai Rice,Meal,2,65,130,Cash,Student,133,131
+C4,2026-06-01,Wednesday,3:15,67,Siomai Rice,Meal,2,65,130,Cash,Student,131,129
+C5,2026-06-01,Wednesday,3:15,23,Fewa Burger,Sandwich,2,35,70,E-Wallet,Employee,137,135
+C6,2026-01-31,Saturday,9:45,42,Sisig,Meal,2,65,130,E-Wallet,Employee,139,137
+C7,2026-01-31,Saturday,10:45,1,Siomai Rice,Meal,2,65,130,Cash,Student,141,139
+C8,2026-01-31,Saturday,11:45,2,Siomai Rice,Meal,2,65,130,Cash,Student,143,141
+C9,2026-01-31,Saturday,3:15,43,Siomai Rice,Meal,3,65,195,Cash,Student,145,142
+C10,2026-01-31,Saturday,3:15,22,Kwek-Kwek,Street Food,4,25,100,E-Wallet,Employee,147,143
+C11,2026-01-31,Saturday,3:15,23,Kwek-Kwek,Street Food,4,25,100,E-Wallet,Employee,149,145
+C12,2026-01-31,Saturday,3:15,11,Cheese Balls,Street Food,4,25,100,Cash,Employee,151,147
+C13,2026-01-31,Saturday,12:45,11,Cheese Balls,Street Food,3,25,75,Cash,Employee,147,144
+C14,2026-01-31,Saturday,3:15,23,Kwek-Kwek,Street Food,2,25,50,Cash,Employee,145,143
+C15,2026-01-31,Saturday,3:15,31,Veggie Balls,Street Food,3,25,75,E-Wallet,Employee,157,154
+C16,2026-01-31,Saturday,3:15,30,Sisig,Meal,3,65,195,E-Wallet,Student,159,156
+C17,2026-01-31,Saturday,3:15,2,Cheese Stick,Street Food,4,25,100,Cash,Student,161,157
+C18,2026-01-31,Saturday,3:15,1,Sisig,Meal,5,65,325,Cash,Student,163,158
+C19,2026-01-31,Saturday,11:45,21,Sisig,Meal,5,65,325,Cash,Student,165,160
+C20,2026-01-31,Saturday,11:45,14,Sisig,Meal,5,65,325,E-Wallet,Student,145,140
+C21,2026-04-21,Tuesday,3:15,3,Sisig,Meal,4,65,260,E-Wallet,Student,154,150
+C22,2026-04-21,Tuesday,3:15,14,Gulaman,Beverage,6,25,150,Cash,Student,163,157
+C23,2026-04-21,Tuesday,3:15,3,Gulaman,Beverage,3,25,75,Cash,Student,145,142
+C24,2026-04-21,Tuesday,11:45,12,Matcha,Beverage,2,25,50,Cash,Student,145,143
+C25,2026-04-21,Tuesday,3:15,10,Chicken Poppers,Meal,4,65,260,E-Wallet,Student,214,210
+C26,2026-06-01,Monday,3:15,12,Chicken Poppers,Meal,43,65,2795,E-Wallet,Student,136,93
+C27,2026-06-01,Monday,12:45,31,Chicken Poppers,Meal,2,65,130,Cash,Student,167,165
+D1,2026-06-01,Monday,3:15,10,Chicken Poppers,Meal,4,65,260,E-Wallet,Student,198,194
+D2,2026-06-01,Monday,11:45,2,Chicken Poppers,Meal,4,80,320,Cash,Employee,229,225
+D3,2026-04-21,Tuesday,3:15,13,Chicken Poppers,Meal,3,80,240,E-Wallet,Employee,120,117
+D4,2026-06-01,Monday,3:15,10,Chicken Poppers,Meal,5,80,400,E-Wallet,Student,194,189
+D5,2026-02-14,Saturday,3:15,9,Chicken Poppers,Meal,55,80,4400,Cash,Employee,187,132
+D6,2026-06-01,Monday,3:15,8,Chicken Poppers,Meal,5,65,325,Cash,Employee,120,115
+D7,2026-06-01,Monday,3:15,22,Chicken Poppers,Meal,5,65,325,Cash,Employee,120,115
+D8,2026-05-08,Friday,3:15,3,Chicken Poppers,Meal,3,65,195,E-Wallet,Employee,120,117
+D9,2026-05-08,Friday,3:15,12,Siomai Rice,Meal,5,65,325,Cash,Employee,120,115
+D10,2026-05-08,Friday,12:00,7,Caramel Macchiato,Beverage,1,45,45,Cash,Student,312,311
+D11,2026-05-08,Friday,3:15,12,Siomai Rice,Meal,5,75,375,Cash,Employee,120,115
+D12,2026-03-04,Tuesday,8:40,2,Siomai Rice,Meal,6,75,450,Cash,Student,120,114
+D13,2026-03-04,Tuesday,8:41,3,Siomai Rice,Meal,6,65,390,E-Wallet,Student,150,144
+D14,2026-03-04,Tuesday,8:42,1,Iced Coffee,Beverage,6,30,180,E-Wallet,Student,150,144
+D15,2026-02-14,Saturday,8:42,4,Iced Coffee,Beverage,64,30,1920,Cash,Student,150,86
+D16,2026-02-14,Saturday,8:42,123,Iced Coffee,Beverage,3,15,45,Cash,Student,150,147
+D17,2026-02-14,Saturday,9:01,3,Iced Coffee,Beverage,4,15,60,Cash,Student,150,146
+D18,2026-02-14,Saturday,8:42,22,Iced Coffee,Beverage,4,30,120,Cash,Student,150,146

@@ -1,0 +1,138 @@
+:root {
+    --maroon: #800000;
+    --dark-maroon: #5A0000;
+    --gold: #FFD700;
+    --light-bg: #F5F5F5;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+}
+
+.btn-maroon {
+    background-color: var(--maroon);
+    color: white;
+    border: none;
+}
+
+.btn-maroon:hover {
+    background-color: var(--dark-maroon);
+    color: white;
+}
+
+.btn-outline-maroon {
+    border: 2px solid var(--maroon);
+    color: var(--maroon);
+}
+
+.btn-outline-maroon:hover {
+    background-color: var(--maroon);
+    color: white;
+    border-color: var(--maroon);
+}
+
+.maroon-text {
+    color: var(--maroon);
+}
+
+.gold-text {
+    color: var(--gold);
+}
+
+.border-left-maroon {
+    border-left: 4px solid var(--maroon) !important;
+}
+
+.border-left-gold {
+    border-left: 4px solid var(--gold) !important;
+}
+
+.border-left-info {
+    border-left: 4px solid #17a2b8 !important;
+}
+
+.border-left-success {
+    border-left: 4px solid #28a745 !important;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.card {
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.15) !important;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    font-weight: 600;
+}
+
+.alert {
+    border-radius: 5px;
+    border: none;
+}
+
+.spinner-border {
+    width: 50px;
+    height: 50px;
+}
+
+#fileInfoCard, #cleaningInfoCard {
+    border-left: 4px solid var(--maroon);
+}
+
+.table-responsive {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.badge {
+    padding: 6px 12px;
+}
+
+@media (max-width: 768px) {
+    .col-md-3, .col-md-6, .col-md-9 {
+        padding: 10px !important;
+    }
+    
+    .card {
+        margin-bottom: 10px;
+    }
+}
+
+/* Chart styling */
+.chart-container {
+    position: relative;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+/* Animation for metrics */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#metricsContainer, #chartsContainer, #topItemsContainer {
+    animation: slideIn 0.3s ease-in-out;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}

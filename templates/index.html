@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagoon Sales Analytics System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg" style="background: linear-gradient(135deg, #800000 0%, #5A0000 100%);">
+        <div class="container-fluid">
+            <span class="navbar-brand fw-bold">
+                <i class="bi bi-graph-up-arrow"></i> Lagoon Sales Analytics System
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row" style="min-height: 100vh;">
+            <!-- Sidebar -->
+            <div class="col-md-3 bg-light border-end p-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header" style="background-color: #800000; color: white;">
+                        <h5 class="mb-0"><i class="bi bi-file-earmark-arrow-up"></i> Data Management</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="fileInput" class="form-label fw-bold">Upload CSV File</label>
+                            <input type="file" class="form-control" id="fileInput" accept=".csv">
+                            <small class="text-muted">Max 16MB</small>
+                        </div>
+                        <button class="btn btn-maroon w-100 mb-2" id="cleanBtn" disabled>
+                            <i class="bi bi-broom"></i> Clean Data
+                        </button>
+                        <button class="btn btn-outline-maroon w-100 mb-2" id="downloadBtn" disabled>
+                            <i class="bi bi-download"></i> Download Cleaned
+                        </button>
+                        <hr>
+                        <button class="btn btn-secondary w-100" id="sampleBtn">
+                            <i class="bi bi-database"></i> Load Sample Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- File Info -->
+                <div class="card border-0 shadow-sm mt-3" id="fileInfoCard" style="display:none;">
+                    <div class="card-header" style="background-color: #FFD700; color: #222;">
+                        <h6 class="mb-0"><i class="bi bi-info-circle"></i> File Information</h6>
+                    </div>
+                    <div class="card-body">
+                        <small class="d-block mb-2"><strong>File:</strong> <span id="fileName">-</span></small>
+                        <small class="d-block mb-2"><strong>Rows:</strong> <span id="fileRows">-</span></small>
+                        <small class="d-block"><strong>Columns:</strong> <span id="fileCols">-</span></small>
+                    </div>
+                </div>
+
+                <!-- Cleaning Info -->
+                <div class="card border-0 shadow-sm mt-3" id="cleaningInfoCard" style="display:none;">
+                    <div class="card-header" style="background-color: #28a745; color: white;">
+                        <h6 class="mb-0"><i class="bi bi-check-circle"></i> Data Cleaned</h6>
+                    </div>
+                    <div class="card-body">
+                        <small class="d-block mb-2"><strong>Original:</strong> <span id="originalRows">-</span> rows</small>
+                        <small class="d-block mb-2"><strong>Cleaned:</strong> <span id="cleanedRows">-</span> rows</small>
+                        <small class="d-block text-danger"><strong>Removed:</strong> <span id="removedRows">-</span> rows</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 p-4">
+                <!-- Loading Spinner -->
+                <div id="loadingSpinner" class="text-center" style="display:none; padding-top: 50px;">
+                    <div class="spinner-border" style="color: #800000;" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3">Processing data...</p>
+                </div>
+
+                <!-- Alerts -->
+                <div id="alertContainer"></div>
+
+                <!-- Key Metrics -->
+                <div id="metricsContainer" style="display:none;">
+                    <h4 class="mb-3"><i class="bi bi-speedometer2"></i> Key Metrics</h4>
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card border-left-maroon shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">Total Revenue</h6>
+                                    <h3 id="totalRevenue" class="maroon-text">₱0.00</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-left-gold shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">Avg Sales/Transaction</h6>
+                                    <h3 id="avgSales" class="gold-text">₱0.00</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-left-info shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">Total Quantity Sold</h6>
+                                    <h3 id="totalQty" class="text-info">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-left-success shadow-sm">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted small">Total Transactions</h6>
+                                    <h3 id="totalTrans" class="text-success">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div id="chartsContainer" style="display:none;">
+                    <h4 class="mb-3"><i class="bi bi-bar-chart"></i> Sales Analysis</h4>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Sales by Food Item (Top 10)</h6>
+                                </div>
+                                <div class="card-body">
+                                    <img id="foodItemChart" src="" alt="Sales by Food Item" style="max-width: 100%; height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Sales by Category</h6>
+                                </div>
+                                <div class="card-body">
+                                    <img id="categoryChart" src="" alt="Sales by Category" style="max-width: 100%; height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Sales by Stall</h6>
+                                </div>
+                                <div class="card-body">
+                                    <img id="stallChart" src="" alt="Sales by Stall" style="max-width: 100%; height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Payment Methods</h6>
+                                </div>
+                                <div class="card-body">
+                                    <img id="paymentChart" src="" alt="Payment Methods" style="max-width: 100%; height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Customer Types</h6>
+                                </div>
+                                <div class="card-body">
+                                    <img id="customerChart" src="" alt="Customer Types" style="max-width: 100%; height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Sales by Day</h6>
+                                </div>
+                                <div class="card-body">
+                                    <img id="dayChart" src="" alt="Sales by Day" style="max-width: 100%; height: auto;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Items -->
+                <div id="topItemsContainer" style="display:none;">
+                    <h4 class="mb-3"><i class="bi bi-star"></i> Top Performing Items</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Best Selling (by Quantity)</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div id="bestSellingList"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header" style="background-color: #f8f9fa;">
+                                    <h6 class="mb-0">Highest Earning</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div id="highestEarningList"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
