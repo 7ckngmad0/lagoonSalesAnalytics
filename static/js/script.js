@@ -167,7 +167,7 @@ function renderTopItems(data) {
         const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
         highestEarningList.innerHTML += `
             <div class="d-flex justify-content-between mb-2">
-                <span>${badge}Stall ${item}</span>
+                <span>${badge}${item}</span>
                 <span class="fw-bold">${formatCurrency(amount)}</span>
             </div>
         `;
@@ -197,7 +197,7 @@ function renderTopItems(data) {
         const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
         highestEarningStall.innerHTML += `
             <div class="d-flex justify-content-between mb-2">
-                <span>${badge}${stall}</span>
+                <span>${badge}Stall ${stall}</span>
                 <span class="fw-bold">${formatCurrency(amount)}</span>
             </div>
         `;
