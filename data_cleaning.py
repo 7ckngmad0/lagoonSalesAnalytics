@@ -78,6 +78,11 @@ def clean_dataset(file_path):
 
     # 13. Enforce consistent Unit_Price per Food_Item (simple map)
     fixed_prices = {
+        "Chicken poppers": 65,
+        "Siomai rice": 40,
+        "Fewa burger": 35,
+        "Sisig": 65,
+        "Iced coffee": 30,
         "Squash-based churros 4pcs": 49,
         "Squash-based churros 8pcs": 89,
         "Carrot-based churros 4pcs": 49,
@@ -98,12 +103,6 @@ def clean_dataset(file_path):
         "Mango spark 22oz + crunch chips ": 85,
         "Cucumber spark 16oz + crunch chips ": 65,
         "Cucumber spark 22oz + crunch chips ": 85,
-        "Cheese Balls": 20,
-        "Corndog": 30,
-        "Pork Sisig": 75,
-        "Liempo Sisig":75,
-        "Beef Sisig": 75,
-        "Chicken Sisig": 75,
         "Ice lolly": 15,
         "Dessert bar": 22,
         "Fiesta ics": 30,
@@ -276,8 +275,6 @@ def clean_dataset(file_path):
         "Pancake": 35,
         "Pancit canton": 30,
         "Hot coffee": 15,
-        "Tofu Sisig": 50,
-        "Hash Brown": 25,
         "Garlic wings": 70,
         "Teriyaki wings": 70,
         "Bbq wings": 70,
@@ -489,7 +486,7 @@ def clean_dataset(file_path):
         "Saging con yelo": 35,
     }
     if "Food_Item" in df.columns and "Unit_Price" in df.columns:
-        df["Unit_Price"] = df["Food_Item"].map(fixed_prices).fillna(df[0])
+        df["Unit_Price"] = df["Food_Item"].map(fixed_prices).fillna(df["Unit_Price"])
         df["Food_Item"] = df["Food_Item"].str.title()
 
     # 14. Clean Customer_Type (remove)
