@@ -187,6 +187,21 @@ function renderTopItems(data) {
             </div>
         `;
     });
+
+    //Highest Earning Stall
+    const highestEarningStall = document.getElementById('highestEarningStall');
+    highestEarningStall.innerHTML = '';
+    const highestEarner = data.sales_by_stall;
+    const topEarner = Object.entries(highestEarner).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    topEarner.forEach(([stall, amount], index) => {
+        const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
+        highestEarningStall.innerHTML += `
+            <div class="d-flex justify-content-between mb-2">
+                <span>${badge}Stall ${stall}</span>
+                <span class="fw-bold">${formatCurrency(amount)}</span>
+            </div>
+        `;
+    });
 }
 
 // Download cleaned data
