@@ -49,7 +49,7 @@ def upload_file():
             'rows': len(df),
             'columns': len(df.columns),
             'column_names': list(df.columns),
-            'preview': df.head(5).to_dict('records')
+            'preview': df.astype(str).to_dict('records')
         }
         
         return jsonify({'success': True, 'data': info})
@@ -77,7 +77,7 @@ def clean_data():
             'original_rows': len(current_data['df']),
             'cleaned_rows': len(cleaned_df),
             'removed_rows': len(current_data['df']) - len(cleaned_df),
-            'preview': cleaned_df.head(5).to_dict('records')
+            'preview': cleaned_df.astype(str).to_dict('records')
         }
         
         # Clean up temp file
