@@ -18,6 +18,98 @@ function formatCurrency(amount) {
     return '₱' + parseFloat(amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+//display raw data
+function displayRawData(rawData){
+    const tableHead = document.getElementById('rawDataHead');
+    const tableBody = document.getElementById('rawDataBody');
+
+    //clears any existing table contents
+    tableHead.innerHTML = '';
+    tableBody.innerHTML = '';
+
+    //checks if data exists
+    if(!rawData || rawData.length === 0){
+        tableBody.innerHTML = '<tr><td colspan="100%" class="text-center">No data available</td></tr>';
+        return;
+    }
+
+    //create table header
+    const headerRow = document.createElement('tr');
+
+    //use keys of the first objects as column names
+    Object.keys(rawData[0]).forEach(column =>{
+        const th = document.createElement('th');
+        th.textContent = column;
+        headerRow.appendChild(th);
+    });
+
+    tableHead.appendChild(headerRow);
+
+    //create table rows
+    rawData.forEach(row => {
+        const tr = document.createElement('tr');
+
+        //add each cell value to the row
+        Object.values(row).forEach(value => {
+            const td = document.createElement('td');
+            td.textContent = value;
+            tr.appendChild(td);
+        });
+
+        tableBody.appendChild(tr);
+    });
+
+    //display the number of rows
+    document.getElementById('rawDataRowCount').textContent = `Rows: ${rawData.length}`;
+
+}
+
+//display cleaned data
+function displayCleanedData(cleanData){
+    const tableHead = document.getElementById('cleanedDataHead');
+    const tableBody = document.getElementById('cleanedDataBody');
+
+    //clears any existing table contents
+    tableHead.innerHTML = '';
+    tableBody.innerHTML = '';
+
+    //checks if data exists
+    if(!cleanData || cleanData.length === 0){
+        tableBody.innerHTML = '<tr><td colspan="100%" class="text-center">No data available</td></tr>';
+        return;
+    }
+
+    //create table header
+    const headerRow = document.createElement('tr');
+
+    //use keys of the first objects as column names
+    Object.keys(cleanData[0]).forEach(column =>{
+        const th = document.createElement('th');
+        th.textContent = column;
+        headerRow.appendChild(th);
+    });
+
+    tableHead.appendChild(headerRow);
+
+    //create table rows
+    cleanData.forEach(row => {
+        const tr = document.createElement('tr');
+
+        //add each cell value to the row
+        Object.values(row).forEach(value => {
+            const td = document.createElement('td');
+            td.textContent = value;
+            tr.appendChild(td);
+        });
+
+        tableBody.appendChild(tr);
+    });
+
+    //display the number of rows
+    document.getElementById('cleanedDataRowCount').textContent = `Rows: ${cleanData.length}`;
+
+}
+
 // File upload handler
 document.getElementById('fileInput').addEventListener('change', async (e) => {
     const file = e.target.files[0];
@@ -46,6 +138,9 @@ document.getElementById('fileInput').addEventListener('change', async (e) => {
         document.getElementById('showDatasetInfoBtn').disabled = false;
         document.getElementById('showRawDataBtn').disabled = false;
         showAlert('File uploaded successfully!', 'success');
+        document.getElementById('rawDataContainer').style.display = 'block';
+        displayRawData(data.data.preview);
+
     } catch (error) {
         showAlert('Error uploading file: ' + error.message, 'danger');
     }
@@ -71,6 +166,9 @@ document.getElementById('cleanDataBtn').addEventListener('click', async () => {
         document.getElementById('generateChartsBtn').disabled = false;
 
         showAlert('Data cleaned successfully!', 'success');
+        document.getElementById('cleanedDataContainer').style.display = 'block';
+        displayCleanedData(data.preview);
+
         loadAnalysis();
     } catch (error) {
         showAlert('Error cleaning data: ' + error.message, 'danger');
