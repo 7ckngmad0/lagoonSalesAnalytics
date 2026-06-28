@@ -471,7 +471,10 @@ def clean_dataset(file_path):
 
     #9. Standardize Time format (HH:MM)
     if "Time" in df.columns:
-        df["Time"] = pd.to_datetime(df["Time"], errors="coerce").dt.strftime("%H:%M")
+        df["Time"] = (
+        pd.to_datetime(df["Time"], format="%H:%M", errors="coerce")
+        .dt.strftime("%H:%M")
+    )
 
     #10. Convert numeric columns
     number_columns = [
