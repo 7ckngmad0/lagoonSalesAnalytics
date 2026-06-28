@@ -28,55 +28,7 @@ def clean_dataset(file_path):
     if "Transaction_ID" in df.columns:
         df = df[df["Transaction_ID"].str.strip() != ""]
 
-    # 6. Rename Type_of_Food → Food_Item
-    if "Type_of_Food" in df.columns:
-        df = df.rename(columns={"Type_of_Food": "Food_Item"})
-
-    if "Food_Category" in df.columns:
-        df["Food_Category"] = df["Food_Category"].str.strip().str.title()
-
-    #7. Standardize Payment_Method (including E-Wallet)
-    df["Payment_Method"] = df["Payment_Method"].str.strip().str.lower().map({
-        "cash": "Cash",
-        "e-wallet": "E-Wallet",
-        "gcash": "GCash",
-        "maya": "Maya"
-    }).fillna("Unknown")
-
-    if "Transaction_ID" in df.columns:
-        df = df.drop_duplicates(subset=["Transaction_ID"], keep="first")
-
-    #8. Standardize Date format
-    if "Date" in df.columns:
-        df["Date"] = pd.to_datetime(df["Date"], errors="coerce").dt.strftime("%Y-%m-%d")
-
-    #9. Standardize Time format (HH:MM)
-    if "Time" in df.columns:
-        df["Time"] = pd.to_datetime(df["Time"], errors="coerce").dt.strftime("%H:%M")
-
-    #10. Convert numeric columns
-    number_columns = [
-        "Stall_Number",
-        "Quantity_Sold",
-        "Unit_Price",
-        "Total_Sales",
-        "Stock_Before",
-        "Stock_After"
-    ]
-    for col in number_columns:
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce")
-
-    # 11. Restrict Stall_Number to valid stalls (1–27 only)
-    valid_stalls = [s for s in range(1, 28) if s not in [4, 5, 7]]
-    if "Stall_Number" in df.columns:
-        df = df[df["Stall_Number"].isin(valid_stalls)]
-
-    # 12. Remove invalid rows
-    df = df[df["Quantity_Sold"] > 0]
-    df = df[df["Unit_Price"] > 0]
-
-    # 13. Enforce consistent Unit_Price per Food_Item (simple map)
+    # 6. Define the standard unit price for each food item
     fixed_prices = {
         "Chicken poppers": 65,
         "Siomai rice": 40,
@@ -485,15 +437,79 @@ def clean_dataset(file_path):
         "Mais con yelo": 40,
         "Saging con yelo": 35,
     }
-    if "Food_Item" in df.columns and "Unit_Price" in df.columns:
-        df["Unit_Price"] = df["Food_Item"].map(fixed_prices).fillna(df["Unit_Price"])
-        df["Food_Item"] = df["Food_Item"].str.title()
+
+    if "Type_of_Food" in df.columns:
+        df["Unit_Price"] = (
+            df["Type_of_Food"]
+            .map(fixed_prices)
+            .fillna(df["Unit_Price"])
+        )
+
+        df["Type_of_Food"] = df["Type_of_Food"].str.title()
+
+    #7. Standardize Payment_Method (including E-Wallet)
+    if "Payment_Method" in df.columns:
+        df["Payment_Method"] = (
+            df["Payment_Method"]
+            .str.strip()
+            .str.lower()
+            .map({
+                "cash": "Cash",
+                "e-wallet": "E-Wallet",
+                "gcash": "GCash",
+                "maya": "Maya"
+            })
+            .fillna("Unknown")
+    )
+
+    if "Transaction_ID" in df.columns:
+        df = df.drop_duplicates(subset=["Transaction_ID"], keep="first")
+
+    #8. Standardize Date format
+    if "Date" in df.columns:
+        df["Date"] = pd.to_datetime(df["Date"], errors="coerce").dt.strftime("%Y-%m-%d")
+
+    #9. Standardize Time format (HH:MM)
+    if "Time" in df.columns:
+        df["Time"] = pd.to_datetime(df["Time"], errors="coerce").dt.strftime("%H:%M")
+
+    #10. Convert numeric columns
+    number_columns = [
+        "Stall_Number",
+        "Quantity_Sold",
+        "Unit_Price",
+        "Total_Sales",
+        "Stock_Before",
+        "Stock_After"
+    ]
+    for col in number_columns:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    # 11. Restrict Stall_Number to valid stalls (1–27 only)
+    valid_stalls = [s for s in range(1, 28) if s not in [4, 5, 7]]
+    if "Stall_Number" in df.columns:
+        df = df[df["Stall_Number"].isin(valid_stalls)]
+
+    # 12. Remove invalid rows
+    df = df[df["Quantity_Sold"] > 0]
+    df = df[df["Unit_Price"] > 0]
+
+    # 13. Ensure unit prices match the standard price list
+    if "Type_of_Food" in df.columns and "Unit_Price" in df.columns:
+        df["Unit_Price"] = (
+            df["Type_of_Food"]
+            .map(fixed_prices)
+            .fillna(df["Unit_Price"])
+        )
+
+        df["Type_of_Food"] = df["Type_of_Food"].str.title()
 
     # 14. Clean Customer_Type (remove)
     if "Customer_Type" in df.columns:
         df["Customer_Type"] = df["Customer_Type"].str.strip()
 
-    # 15. Handle missing values in Stock_Before / Stock_After
+    # 15. Replace missing stock values with 0
     for col in ["Stock_Before", "Stock_After"]:
         if col in df.columns:
             df[col] = df[col].fillna(0)  # drop rows

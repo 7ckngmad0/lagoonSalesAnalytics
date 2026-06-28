@@ -255,7 +255,7 @@
                                     <h6 class="mb-0">Sales by Food Item (Top 10)</h6>
                                 </div>
                                 <div class="card-body">
-                                    <img id="foodItemChart" src="" alt="Sales by Food Item" class="chart-img" />
+                                    <canvas id="foodItemChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -265,7 +265,7 @@
                                     <h6 class="mb-0">Sales by Category</h6>
                                 </div>
                                 <div class="card-body">
-                                    <img id="categoryChart" src="" alt="Sales by Category" class="chart-img" />
+                                    <canvas id="categoryChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -278,7 +278,7 @@
                                     <h6 class="mb-0">Sales by Stall</h6>
                                 </div>
                                 <div class="card-body">
-                                    <img id="stallChart" src="" alt="Sales by Stall" class="chart-img" />
+                                    <canvas id="stallChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -288,7 +288,7 @@
                                     <h6 class="mb-0">Payment Methods</h6>
                                 </div>
                                 <div class="card-body">
-                                    <img id="paymentChart" src="" alt="Payment Methods" class="chart-img" />
+                                    <canvas id="paymentChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -301,7 +301,7 @@
                                     <h6 class="mb-0">Customer Types</h6>
                                 </div>
                                 <div class="card-body">
-                                    <img id="customerChart" src="" alt="Customer Types" class="chart-img" />
+                                    <canvas id="customerChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +311,7 @@
                                     <h6 class="mb-0">Sales by Day</h6>
                                 </div>
                                 <div class="card-body">
-                                    <img id="dayChart" src="" alt="Sales by Day" class="chart-img" />
+                                    <canvas id="dayChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -373,6 +373,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

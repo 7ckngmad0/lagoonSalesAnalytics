@@ -1,0 +1,500 @@
+Transaction_ID,Date,Day,Time,Stall Number,Type of Food,Food Category,Quantity Sold,Unit Price,Total Sales,Payment Method,Customer Type,Stock Before,Stock After
+S2,01/12/2026,Monday,13:24,1,Assorted Churros,Snack,2,89,178,Cash,Student,50,48
+S1,01/12/2026,Monday,14:29,1,Squash-Based Churros,Snack,1,49,49,Cash,Student,50,49
+S6,02/14/2026,Saturday,8:20,1,Carrot-Based Churros,Snack,2,89,178,Cash,Employee,50,48
+S7,02/14/2026,Saturday,14:48,1,Squash-Based Churros,Snack,2,49,98,Cash,Employee,50,48
+S3,02/14/2026,Saturday,17:02,1,Carrot-Based Churros,Snack,2,49,98,Cash,Student,48,46
+B27,02/14/2026,Saturday,15:05,14,Carrot-Based Churros,Beverage,4,35,140,Cash,Student,50,46
+M24,02/14/2026,Saturday,8:36,24,Squash-Based Churros,Meal,55,65,3575,Cash,Employee,50,-5
+M31,02/14/2026,Saturday,17:31,24,BBQ Crunch,Meal,2,65,130,Cash,Student,-5,-7
+M30,02/14/2026,Saturday,9:29,26,Mango Spark,Meal,64,75,4800,Cash,Student,50,-14
+B26,02/14/2026,Saturday,14:23,123,Mango Spark,Beverage,3,25,75,Cash,Student,50,47
+S29,03/04/2026,Tuesday,7:30,9,BBQ Crunch,Snack,2,198,396,Cash,Student,50,48
+S30,03/04/2026,Tuesday,14:33,9,BBQ Crunch,Snack,4,97,388,E-Wallet,Student,50,46
+M29,03/04/2026,Tuesday,10:53,26,Mango Spark,Meal,6,75,450,E-Wallet,Student,50,44
+S17,04/21/2026,Tuesday,7:20,1,Cheese Balls,Snack,3,49,147,E-Wallet,Student,50,47
+S18,04/21/2026,Tuesday,11:52,1,Pork Sisig,Snack,2,89,178,Cash,Employee,47,45
+S16,04/21/2026,Tuesday,12:20,1,Corn Dog,Snack,3,49,147,E-Wallet,Employee,50,47
+B4,04/21/2026,Tuesday,9:44,8,Pork Sisig,Beverage,12,38,456,Cash,Student,50,38
+B10,04/21/2026,Tuesday,14:40,8,Cheese Balls,Beverage,2,38,76,Cash,Student,38,36
+B9,04/21/2026,Tuesday,15:37,8,Pork Sisig,Beverage,2,43,86,Cash,Student,50,48
+B5,04/21/2026,Tuesday,16:44,8,FEWA Burger,Beverage,4,43,172,Cash,Student,48,44
+S18,04/21/2026,Tuesday,7:29,9,Siomai Rice,Snack,1,127,127,E-Wallet,Student,50,49
+S21,04/21/2026,Tuesday,9:15,9,FEWA Burger,Snack,2,97,194,Cash,Student,50,48
+S19,04/21/2026,Tuesday,10:28,9,Siomai Rice,Snack,2,198,396,E-Wallet,Student,50,48
+S20,04/21/2026,Tuesday,15:07,9,Siomai Rice,Snack,2,228,456,Cash,Student,50,48
+M8,04/21/2026,Tuesday,10:17,10,Veggie Balls,Meal,1,70,70,Cash,Student,50,49
+M7,04/21/2026,Tuesday,14:51,10,Veggie Balls,Meal,1,70,70,Cash,Student,49,48
+M9,04/21/2026,Tuesday,16:41,10,Veggie Balls,Meal,1,99,99,E-Wallet,Student,50,49
+M11,04/21/2026,Tuesday,9:34,11,Veggie Balls,Meal,1,99,99,Cash,Student,50,49
+M12,04/21/2026,Tuesday,9:35,11,Assorted Churros,Meal,2,119,238,E-Wallet,Employee,50,48
+M13,04/21/2026,Tuesday,9:57,11,Carrot-Based Churros,Meal,2,99,198,E-Wallet,Employee,49,47
+B11,04/21/2026,Tuesday,12:44,11,Carrot-Based Churros,Beverage,2,35,70,Cash,Student,50,48
+M10,04/21/2026,Tuesday,15:49,11,Kape Latte,Meal,1,119,119,Cash,Student,48,47
+B12,04/21/2026,Tuesday,9:17,12,Kape Vanilla,Beverage,2,25,50,Cash,Employee,50,48
+B13,04/21/2026,Tuesday,16:19,12,Kape Matcha,Beverage,2,35,70,Cash,Employee,50,48
+SF5,04/21/2026,Tuesday,17:40,15,Kape Matcha,Street Food,2,20,40,Cash,Employee,50,48
+S25,04/21/2026,Tuesday,13:01,20,Kape Vanilla,Snack,4,70,280,E-Wallet,Student,50,46
+S26,04/21/2026,Tuesday,16:55,20,Kape Vanilla,Snack,6,49,294,Cash,Student,50,44
+M17,04/21/2026,Tuesday,8:51,22,Kape Latte,Meal,4,65,260,E-Wallet,Student,50,46
+M15,04/21/2026,Tuesday,15:16,22,Mega Fries,Meal,3,65,195,Cash,Student,46,43
+M22,04/21/2026,Tuesday,17:37,23,Giga Fries,Meal,3,60,180,E-Wallet,Employee,50,47
+M16,04/21/2026,Tuesday,14:19,222,Tera Fries,Meal,2,90,180,Cash,Student,50,48
+B3,04/22/2026,Wednesday,9:46,2,Jumbo Fries,Beverage,4,50,200,Cash,Student,50,46
+S11,04/22/2026,Wednesday,13:33,3,Bagnet w/ Rice,Snack,2,20,40,E-Wallet,Student,50,48
+S13,04/22/2026,Wednesday,15:44,3,Bagnet w/ Rice,Snack,4,20,80,Cash,Student,48,44
+S12,04/22/2026,Wednesday,15:45,3,Beef Samgyup,Snack,5,30,150,Cash,Student,50,45
+M1,04/22/2026,Wednesday,16:50,3,Buy 1 Take 1 Beef Pepper Rice,Meal,4,75,300,E-Wallet,Student,50,46
+M3,04/22/2026,Wednesday,17:30,3,Buy 1 Take 1 Shawarma Rice,Meal,4,75,300,E-Wallet,Employee,46,42
+M2,04/22/2026,Wednesday,17:37,3,Bottled Water,Meal,3,75,225,Cash,Student,42,39
+B7,04/22/2026,Wednesday,8:25,8,Buy 1 Take 1 Beef Pepper Rice,Beverage,1,48,48,E-Wallet,Student,50,49
+B6,04/22/2026,Wednesday,13:50,8,Buy 1 Take 1 Shawarma Rice,Beverage,1,48,48,E-Wallet,Student,49,48
+S5,05/08/2026,Friday,15:56,1,Lemonade,Snack,2,49,98,E-Wallet,Student ,50,48
+S4,05/08/2026,Friday,16:46,1,Cucumber,Snack,2,89,178,E-Wallet,Employee,50,48
+S28,05/08/2026,Friday,14:17,9,Watermelon,Snack,3,198,594,Cash,Employee,50,47
+SF2,05/08/2026,Friday,12:51,15,Watermelon,Street Food,3,20,60,E-Wallet,Student,50,47
+M27,05/08/2026,Friday,13:24,16,Cucumber,Meal,3,50,150,E-Wallet,Employee,50,47
+S15,05/08/2026,Friday,7:23,20,Cucumber,Snack,3,70,210,Cash,Student,50,47
+M5,05/08/2026,Friday,11:41,20,Lemonade,Meal,3,65,195,Cash,Student,50,47
+M6,05/08/2026,Friday,13:12,23,Lemonade,Meal,3,35,105,E-Wallet,Student,50,47
+M28,05/08/2026,Friday,10:11,27,Red Tea,Meal,1,80,80,Cash,Student,50,49
+S27,05/08/2026,Friday,17:52,27,Sisig Rice,Snack,5,95,475,Cash,Employee,50,45
+S8,05/13/2026,Wednesday,8:05,2,Mango Tapioca,Snack,2,35,70,E-Wallet,Employee,50,48
+S9,05/13/2026,Wednesday,11:09,2,Lemon Iced Tea,Snack,4,35,140,Cash,Student,48,44
+B1,05/13/2026,Wednesday,14:44,2,Red Iced Tea,Beverage,2,40,80,E-Wallet,Student,50,48
+B8,05/13/2026,Wednesday,14:46,8,Milky Watermelon,Beverage,2,43,86,Cash,Student,50,48
+B2,05/13/2026,Wednesday,14:02,14,Lemon Iced Tea,Beverage,1,50,50,E-Wallet,Student,50,49
+SF3,05/13/2026,Wednesday,9:14,15,Mango Tapioca,Street Food,2,20,40,Cash,Student,50,48
+SF4,05/13/2026,Wednesday,14:08,15,Fishball,Street Food,3,20,60,Cash,Student,48,45
+S38,05/18/2026,Monday,10:36,1,Kwek-Kwek,Snack,1,89,89,E-Wallet,Student,50,49
+B28,05/18/2026,Monday,17:09,8,Veggie Balls,Beverage,1,38,38,E-Wallet,Student,50,49
+B29,05/18/2026,Monday,8:05,14,Squidball,Beverage,2,25,50,E-Wallet,Employee,50,48
+B30,05/18/2026,Monday,17:03,14,Cheese Stick,Beverage,1,45,45,Cash,Student,50,49
+M39,05/18/2026,Monday,9:30,25,Hamburger,Meal,1,70,70,Cash,Employee,50,49
+M37,05/18/2026,Monday,10:43,25,FEWA Burger,Meal,1,40,40,Cash,Employee,50,49
+M38,05/18/2026,Monday,14:03,25,Hamburger w/ Cheese,Meal,3,75,225,Cash,Employee,50,47
+S36,05/18/2026,Monday,7:55,27,FEWA Burger,Dessert,2,40,80,E-Wallet,Employee,50,48
+S37,05/18/2026,Monday,7:24,122,Hamburger w/ Cheese,Snack,2,40,80,E-Wallet,Student,50,48
+M42,05/20/2026,Tuesday,14:55,11,1pc Chicken w/ Rice & Drinks,Meal,1,99,99,Cash,Student,50,49
+M43,05/20/2026,Tuesday,16:23,11,2pcs Chicken w/ Rice & Drinks,Meal,1,119,119,Cash,Student,50,49
+B32,05/20/2026,Tuesday,9:57,12,1pc Chicken w/ Rice & Drinks,Beverage,1,35,35,Cash,Employee,50,49
+S31,05/20/2026,Wednesday,17:37,13,2pcs Chicken w/ Rice & Drinks,Snack,1,35,35,E-Wallet,Student,50,49
+SF23,05/20/2026,Wednesday,9:12,15,2pcs Chicken w/ Rice,Street Food,5,35,175,E-Wallet,Employee,50,45
+S33,05/20/2026,Wednesday,16:10,16,Siomai Rice,Snack,1,60,60,Cash,Employee,50,49
+S32,05/20/2026,Wednesday,16:31,17,Burger Steak,Snack,2,30,60,Cash,Student,50,48
+M40,05/20/2026,Wednesday,15:02,18,Lechon Paksiw,Meal,2,50,100,Cash,Student,50,48
+M41,05/20/2026,Wednesday,10:42,19,Sago't Gulaman,Meal,2,50,100,Cash,Employee,50,48
+D1,05/21/2026,Thursday,13:07,6,Boneless Fried Chicken,Dessert,5,35,175,Cash,Employee,50,45
+S!,05/21/2026,Thursday,9:48,13,Boneless Fried Chicken,Snack,3,30,90,E-Wallet,Student,50,47
+B31,05/21/2026,Thursday,12:51,25,Burger Steak,Beverage,2,25,50,Cash,Student,50,48
+S40,05/22/2026,Friday,13:29,1,Tofu Sisig,Snack,2,49,98,Cash,Student,50,48
+B33,05/22/2026,Friday,12:49,12,Dean's Burger,Beverage,1,25,25,Cash,Student,50,49
+B37,05/22/2026,Friday,14:05,14,Kare-Kare w/ Rice,Beverage,1,35,35,Cash,EMPLOYEE,50,49
+S34,05/22/2026,Friday,9:04,17,Giga Fries,Snack,1,35,35,E-Wallet,Employee,50,49
+S37,05/22/2026,Friday,15:02,17,Giga Fries,Snack,2,30,60,Cash,Employee,50,48
+M57,05/22/2026,Friday,13:10,18,Jumbo Fries,Meal,3,79,237,Cash,EMPLOYEE,50,47
+M58,05/22/2026,Friday,11:26,19,Beef Tapa,Meal,3,50,150,Cash,Employee,50,47
+B45,05/22/2026,Friday,7:03,23,Beef Tapa,Beverage,2,20,40,E-Wallet,Student,50,48
+S36,05/22/2026,Friday,13:37,23,Watermelon,Snack,5,30,150,Cash,Student,50,45
+B42,05/22/2026,Friday,14:43,24,Milky Watermelon,Beverage,1,49,49,Cash,Student,50,49
+D2,05/23/2026,Saturday,7:47,6,Boneless Fried Chicken,Dessert,3,28,84,E-Wallet,Student,50,47
+B40,05/23/2026,Saturday,12:20,8,Tofu Sisig,Beverage,1,38,38,Cash,Student,50,49
+M50,05/23/2026,Saturday,9:00,11,Tofu Sisig,Meal,2,70,140,Cash,EMPLOYEE,50,48
+,05/23/2026,Saturday,13:02,13,Tonkatsu w/ Rice,Beverage,2,40,80,Cash,Employee,50,48
+B43,05/23/2026,Saturday,9:40,14,Hungarian w/ Rice,Beverage,3,25,75,Cash,Student,50,47
+B34,05/23/2026,Saturday,13:38,14,Tonkatsu w/ Rice,Beverage,1,35,35,E-Wallet,Student,50,49
+B36,05/23/2026,Saturday,11:23,16,Cheesy FEWA,Beverage,1,35,35,Cash,Student,50,49
+M46,05/23/2026,Saturday,15:43,16,Cheesy Biggy Burger Solo,Meal,1,60,60,Cash,Employee,50,49
+S38,05/23/2026,Saturday,13:04,17,Cheesy Biggy Burger B1T1,Snack,3,30,90,Cash,Student,50,47
+S35,05/23/2026,Saturday,13:46,17,Cheesy FEWA,Snack,3,26,78,E-Wallet,Student,50,47
+M51,05/23/2026,Saturday,8:06,18,Cheesy Biggy Burger B1T1,Meal,2,79,158,E-Wallet,STUDENT,50,48
+S39,05/23/2026,Saturday,9:31,18,Mais Con Yelo,Snack,4,49,196,Cash,Student,50,46
+M56,05/23/2026,Saturday,11:23,19,Carbonara,Meal,2,50,100,E-Wallet,Employee,50,48
+M45,05/23/2026,Saturday,10:05,22,Cheesy FEWA,Meal,4,65,260,E-Wallet,Employee,50,46
+M48,05/23/2026,Saturday,10:55,22,Kape Vanilla,Meal,3,70,210,Cash,Student,50,47
+B44,05/23/2026,Saturday,12:34,24,Squash Based Churros,Beverage,1,59,59,Cash,STUDENT,50,49
+M#,05/23/2026,Saturday,13:30,24,Milky Watermelon,Meal,2,75,150,E-Wallet,Employee,50,48
+M44,05/23/2026,Saturday,9:42,26,Mango Tapioca,Meal,2,50,100,E-Wallet,Employee,50,48
+M47,05/23/2026,Saturday,16:28,26,Pork Mushroom,Meal,3,75,225,Cash,Student,50,47
+S41,05/25/2026,Monday,9:07,2,Bopis w/ Rice,Snack,4,35,140,Cash,EMPLOYEE,50,46
+S50,05/25/2026,Monday,8:10,3,Fried Noodles w/ Siomai,Snack,3,20,60,E-Wallet,STUDENT,50,47
+m66,05/25/2026,Monday,9:15,3,Corn Dog w Cheese,Meal,2,75,150,E-Wallet,EMPLOYEE,50,48
+m84,05/25/2026,Monday,12:58,3,Egg Sandwich,Meal,5,75,375,Cash,STUDENT,48,43
+M89,05/25/2026,Monday,16:52,3,Egg Sandwich w/ Cheese,Meal,1,75,75,Cash,Employee,50,49
+B41,05/25/2026,Monday,10:35,8,Premium Cruncy Bar,Beverage,1,38,38,Cash,STUDENT,50,49
+b55,05/25/2026,Monday,17:02,13,Rice Chicken Pops,Beverage,1,25,25,E-Wallet,Student,50,49
+B37,05/25/2026,Monday,15:03,14,Belgian Chocolate,Beverage,1,35,35,Cash,Student,50,49
+B35,05/25/2026,Monday,14:25,16,Cheesy Biggy Bacon Burger,Beverage,2,30,60,E-Wallet,Employee,50,48
+M86,05/25/2026,Monday,15:50,16,Bottled Water,Meal,3,50,150,Cash,Employee,50,47
+M73,05/25/2026,Monday,11:00,18,Lemonade,Meal,2,143,286,E-Wallet,EMPLOYEE,50,48
+M53,05/25/2026,Monday,11:50,18,Buy 1 Take 1 Shawarma Rice,Meal,1,143,143,E-Wallet,Student,48,47
+M85,05/25/2026,Monday,12:04,18,Buy 1 Take 1 Pad Kra Pao,Meal,3,143,429,Cash,Student,47,44
+B38,05/25/2026,Monday,13:31,18,Bacon & Cheese,Beverage,1,40,40,Cash,EMPLOYEE,50,49
+S45,05/25/2026,Monday,14:34,18,Creamstick,Snack,3,49,147,E-Wallet,Student,50,47
+S#52,05/25/2026,Monday,15:34,18,Watermelon,Snack,2,49,98,Cash,Student,47,45
+M62,05/25/2026,Monday,17:48,18,Melon,Meal,1,143,143,Cash,Student,44,43
+B66,05/25/2026,Monday,9:20,19,Ultimate Ube,Beverage,3,20,60,Cash,Student,50,47
+M55,05/25/2026,Monday,14:28,19,Siomai w Rice,Meal,1,50,50,E-Wallet,Student,50,49
+B53,05/25/2026,Monday,15:21,19,1pc Chicken w/ Rice & Drinks,Beverage,3,40,120,Cash,STUDENT,47,44
+M49,05/25/2026,Monday,11:33,22,Hotcake,Meal,2,90,180,Cash,Employee,50,48
+M61,05/25/2026,Monday,8:18,23,Bacon Hotdog Rice,Meal,2,50,100,Cash,Student,50,48
+M100,05/25/2026,Monday,8:53,23,Beef Tapa,Meal,4,60,240,E-Wallet,Student,50,46
+B67,05/25/2026,Monday,9:21,23,2pcs Chicken Wings w/ Rice,Beverage,2,20,40,Cash,Student,50,48
+M87,05/25/2026,Monday,9:44,23,2pcs Chicken w/ Rice,Meal,1,60,60,Cash,Student,46,45
+M69,05/25/2026,Monday,14:50,23,Belgian Chocolate,Meal,1,60,60,E-Wallet,Student,50,49
+SF24,05/25/2026,Monday,17:20,26,Red Iced Tea,Street Food,2,25,50,Cash,Student,50,48
+,05/26/2026,Tuesday,7:28,3,Bottled Water,Meal,5,75,375,Cash,Student,50,45
+S42,05/26/2026,Tuesday,8:27,3,Bottled Water,Snack,1,30,30,Cash,Employee,50,49
+m94,05/26/2026,Tuesday,9:11,3,2pcs Chicken w/ Rice & Drinks,Meal,3,75,225,E-Wallet,Employee,50,47
+S44,05/26/2026,Tuesday,12:01,3,Belgian Chocolate,Snack,4,20,80,E-Wallet,Employee,50,46
+M78,05/26/2026,Tuesday,12:35,3,Lemon Iced Tea,Meal,2,75,150,E-Wallet,Employee,50,48
+M68,05/26/2026,Tuesday,14:30,3,Cheese Stick,Meal,3,75,225,Cash,EMPLOYEE,47,44
+M96,05/26/2026,Tuesday,17:36,3,Buy 1 Take 1 Meal,Meal,1,75,75,Cash,Student,50,49
+s51,05/26/2026,Tuesday,16:07,13,Mango Tapioca,Snack,2,35,70,Cash,Student,50,48
+B38,05/26/2026,Tuesday,11:41,14,Buy 1 Take 1 Meal,Beverage,1,45,45,Cash,Student,50,49
+B40,05/26/2026,Tuesday,15:36,14,Shawarma Rice,Beverage,2,35,70,E-Wallet,Employee,49,47
+b68,05/26/2026,Tuesday,10:13,15,Squeeze Lemonade w/ Yakult,Beverage,1,30,30,Cash,STUDENT,50,49
+B62,05/26/2026,Tuesday,9:08,18,Mango Tapioca,Beverage,2,25,50,Cash,Student,50,48
+,05/26/2026,Tuesday,15:15,18,Kape Hazelnut,Snack,4,49,196,E-Wallet,Student,50,46
+M90,05/26/2026,Tuesday,16:32,18,Kape Chocolate,Meal,1,143,143,Cash,EMPLOYEE,50,49
+M64,05/26/2026,Tuesday,7:37,19,Shawarma Rice Meal,Meal,1,50,50,Cash,Student,50,49
+B63,05/26/2026,Tuesday,15:21,19,Mango Tapioca,Beverage,2,30,60,Cash,Student,50,48
+M74,05/26/2026,Tuesday,16:52,19,2pcs Chicken Wings w/ Rice,Meal,1,50,50,Cash,EMPLOYEE,49,48
+b54,05/26/2026,Tuesday,9:00,23,Shawarma Pita Solo,Beverage,2,40,80,Cash,Student,50,48
+B61,05/26/2026,Tuesday,10:42,23,Kape Caramel,Beverage,3,60,180,Cash,Student,50,47
+M81,05/26/2026,Tuesday,17:20,23,Matcha Latte,Meal,4,35,140,Cash,Employee,50,46
+B46,05/26/2026,Tuesday,15:44,24,Mango Tapioca,Beverage,1,49,49,E-Wallet,Employee,50,49
+,05/26/2026,Tuesday,17:46,24,Rice Chicken Pops,Beverage,1,39,39,Cash,Student,50,49
+,05/26/2026,Tuesday,9:37,111,Beef Tapa Rice Bowl,Meal,1,80,80,E-Wallet,Student,50,49
+S71,05/28/2026,Thursday,10:24,2,Spanish Latte,Snack,4,35,140,Cash,Employee,50,46
+S86,05/28/2026,Thursday,13:18,2,Chicken Fillet Ricebowl,Snack,3,35,105,E-Wallet,Employee,46,43
+S87,05/28/2026,Thursday,14:10,2,Rice Chicken Pops,Snack,1,65,65,E-Wallet,Student,50,49
+S!82,05/28/2026,Thursday,15:57,2,C2 Apple,Snack,2,65,130,Cash,Student,49,47
+S78,05/28/2026,Thursday,16:00,2,Carrot-Based Churros,Snack,1,85,85,Cash,Student,47,46
+S80,05/28/2026,Thursday,17:22,2,Classic Crunch w/ Dip,Snack,3,35,105,Cash,Employee,50,47
+S68,05/28/2026,Thursday,17:49,2,Strawberry Latte,Snack,2,35,70,E-Wallet,Student,47,45
+,05/28/2026,Thursday,7:03,3,Tofu Sisig,Meal,5,75,375,Cash,Employee,50,45
+m91,05/28/2026,Thursday,8:20,3,Bottled Water,Meal,1,75,75,E-Wallet,Student,50,49
+M98,05/28/2026,Thursday,9:56,3,Squeeze Lemonade Classic,Meal,4,75,300,Cash,Employee,49,45
+S47,05/28/2026,Thursday,13:02,3,Chicken Onion Rings Rice Bowl,Snack,4,20,80,Cash,Employee,50,46
+m86,05/28/2026,Thursday,13:30,3,Chicken Fillet,Meal,3,75,225,Cash,Student,45,42
+M82,05/28/2026,Thursday,13:52,3,Corn Dog,Meal,2,75,150,E-Wallet,Student,50,48
+M88,05/28/2026,Thursday,15:12,3,Cucumber Lemonade,Meal,2,75,150,Cash,STUDENT,48,46
+m101,05/28/2026,Thursday,16:55,3,Kape Matcha,Meal,3,75,225,Cash,STUDENT,46,43
+D19,05/28/2026,Thursday,7:55,6,Shawarma Rice Meal,Dessert,5,30,150,Cash,EMPLOYEE,50,45
+M113,05/28/2026,Thursday,7:55,6,Rice Chicken Pops,Meal,3,60,180,Cash,Student,50,47
+M106,05/28/2026,Thursday,11:14,6,Pork Sisig,Meal,1,60,60,Cash,Student,47,46
+d17,05/28/2026,Thursday,16:39,6,Liempo Sisig,Dessert,3,22,66,E-Wallet,Student,50,47
+D16,05/28/2026,Thursday,17:40,6,Pork Sisig,Dessert,2,22,44,Cash,Student,47,45
+D20,05/28/2026,Thursday,17:56,6,Sago't Gulaman,Dessert,2,22,44,Cash,Employee,45,43
+B85,05/28/2026,Thursday,10:00,8,Shawarma Pita Solo,Beverage,4,38,152,Cash,Student,50,46
+B88,05/28/2026,Thursday,10:33,8,Cucumber Lemonade,Beverage,1,38,38,E-Wallet,STUDENT,50,49
+B49,05/28/2026,Thursday,12:23,8,Lechon Paksiw,Beverage,2,48,96,Cash,EMPLOYEE,50,48
+B87,05/28/2026,Thursday,13:59,8,Cheese Balls,Beverage,3,38,114,Cash,EMPLOYEE,50,47
+B80,05/28/2026,Thursday,15:20,8,Tofu Sisig,Beverage,3,38,114,Cash,Student,46,43
+B39,05/28/2026,Thursday,16:05,8,Bottled Water,Beverage,2,38,76,Cash,EMPLOYEE,47,45
+B81,05/28/2026,Thursday,16:30,8,Squeeze Lemonade Classic,Beverage,1,38,38,Cash,Student,45,44
+S81,05/28/2026,Thursday,7:05,9,Lemon Iced Tea,Snack,1,228,228,E-Wallet,Student,50,49
+S61,05/28/2026,Thursday,9:44,9,C2 Apple,Snack,3,97,291,E-Wallet,Employee,50,47
+S62,05/28/2026,Thursday,10:18,9,Chicken Fillet,Snack,2,67,134,E-Wallet,Student,50,48
+S66,05/28/2026,Thursday,12:16,9,Tofu Sisig,Snack,2,97,194,E-Wallet,STUDENT,47,45
+,05/28/2026,Thursday,12:26,9,Shawarma Rice Meal,Snack,2,67,134,Cash,Student,48,46
+S76,05/28/2026,Thursday,13:17,9,Rice Chicken Pops,Snack,1,198,198,Cash,Student,50,49
+S82,05/28/2026,Thursday,14:21,9,Luncheon Meat,Snack,2,97,194,E-Wallet,Employee,45,43
+s60,05/28/2026,Thursday,14:59,9,Beef Sisig,Snack,1,41,41,Cash,STUDENT,50,49
+S79,05/28/2026,Thursday,17:44,9,Sisig Rice,Snack,1,97,97,Cash,Student,43,42
+M117,05/28/2026,Thursday,9:34,10,Melon,Meal,1,70,70,Cash,Employee,50,49
+M116,05/28/2026,Thursday,10:50,10,Chicken Sisig,Meal,3,85,255,E-Wallet,EMPLOYEE,50,47
+M104,05/28/2026,Thursday,10:15,11,Lemon Iced Tea,Meal,2,99,198,Cash,Student,50,48
+M119,05/28/2026,Thursday,12:40,11,Sago't Gulaman,Meal,1,119,119,Cash,Employee,50,49
+,05/28/2026,Thursday,8:09,13,Chicken Onion Rings Rice Bowl,Meal,1,50,50,E-Wallet,Employee,50,49
+M99,05/28/2026,Thursday,10:01,13,Pork Sisig,Meal,1,75,75,Cash,Student,50,49
+m97,05/28/2026,Thursday,14:42,13,Shawarma Pita Solo,Meal,1,60,60,Cash,EMPLOYEE,50,49
+,05/28/2026,Thursday,14:46,13,Luncheon Meat,Meal,1,60,60,E-Wallet,STUDENT,50,49
+S48,05/28/2026,Thursday,16:23,13,Liempo Sisig,Snack,1,30,30,Cash,Employee,50,49
+B71,05/28/2026,Thursday,10:43,14,Squeeze Lemonade Classic,Beverage,1,60,60,Cash,Employee,50,49
+B90,05/28/2026,Thursday,13:52,14,Hotcake,Beverage,1,25,25,Cash,EMPLOYEE,50,49
+S94,05/28/2026,Thursday,8:59,16,Rice Chicken Pops,Snack,1,75,75,Cash,STUDENT,50,49
+S72,05/28/2026,Thursday,9:00,16,Liempo Sisig,Snack,2,25,50,Cash,Student,50,48
+B73,05/28/2026,Thursday,9:54,16,Shawarma Pita Solo,Beverage,3,30,90,Cash,Employee,50,47
+M105,05/28/2026,Thursday,9:57,16,C2 Apple,Meal,4,65,260,Cash,STUDENT,50,46
+m71,05/28/2026,Thursday,11:25,16,Cheese Balls,Meal,3,60,180,Cash,Student,50,47
+M72,05/28/2026,Thursday,11:40,16,Lychee,Meal,2,50,100,E-Wallet,STUDENT,50,48
+S69,05/28/2026,Thursday,13:12,16,Shawarma Rice Meal,Snack,2,65,130,Cash,Employee,50,48
+B46,05/28/2026,Thursday,13:46,16,Lechon Paksiw,Beverage,3,35,105,Cash,EMPLOYEE,47,44
+S92,05/28/2026,Thursday,13:56,16,Tofu Sisig,Snack,1,75,75,Cash,STUDENT,49,48
+M70,05/28/2026,Thursday,14:05,16,Squeeze Lemonade Classic,Meal,4,50,200,E-Wallet,Student,48,44
+M95,05/28/2026,Thursday,14:06,16,Pork Sisig,Meal,2,65,130,Cash,STUDENT,46,44
+M120,05/28/2026,Thursday,14:50,16,Pork Sisig,Meal,2,50,100,E-Wallet,Employee,44,42
+B76,05/28/2026,Thursday,15:52,16,Cucumber Lemonade,Beverage,1,35,35,Cash,EMPLOYEE,44,43
+M112,05/28/2026,Thursday,16:25,16,Liempo Sisig,Meal,1,65,65,E-Wallet,Student,44,43
+B51,05/28/2026,Thursday,16:44,16,Egg Sandwich,Beverage,2,35,70,Cash,Student,43,41
+M59,05/28/2026,Thursday,17:46,16,Sago't Gulaman,Meal,3,50,150,E-Wallet,STUDENT,42,39
+S88,05/28/2026,Thursday,12:21,17,Beef Sisig,Snack,2,26,52,Cash,EMPLOYEE,50,48
+B58,05/28/2026,Thursday,14:14,18,Shawarma Rice Meal,Beverage,1,35,35,Cash,Student,50,49
+S43,05/28/2026,Thursday,15:17,18,Lemon Iced Tea,Snack,2,49,98,Cash,Employee,50,48
+B#56,05/28/2026,Thursday,8:59,19,Pork Sisig,Beverage,2,20,40,Cash,Student,50,48
+M92,05/28/2026,Thursday,9:45,19,Hotcake,Meal,1,50,50,Cash,Student,50,49
+b70,05/28/2026,Thursday,10:25,19,Cheese Balls,Beverage,1,20,20,Cash,Student,50,49
+B65,05/28/2026,Thursday,14:01,19,Egg Sandwich w/ Cheese,Beverage,3,40,120,Cash,Employee,48,45
+B48,05/28/2026,Thursday,17:56,19,Rice Chicken Pops,Beverage,2,20,40,Cash,Employee,49,47
+S96,05/28/2026,Thursday,16:22,20,Pork Sisig,Snack,2,70,140,Cash,STUDENT,50,48
+,05/28/2026,Thursday,8:36,23,Pork Sisig,Beverage,3,30,90,Cash,STUDENT,50,47
+m75,05/28/2026,Thursday,10:49,23,Burgersilog,Meal,2,35,70,E-Wallet,Student,50,48
+M65,05/28/2026,Thursday,11:21,23,Tonkatsu w/ Rice,Meal,4,60,240,Cash,STUDENT,50,46
+m93,05/28/2026,Thursday,11:34,23,Shawarma Pita Solo,Meal,1,60,60,Cash,EMPLOYEE,46,45
+b59,05/28/2026,Thursday,16:10,23,Lemon Iced Tea,Beverage,2,30,60,Cash,Student,50,48
+b57,05/28/2026,Thursday,16:46,23,Sago't Gulaman,Beverage,4,20,80,Cash,EMPLOYEE,47,43
+M54,05/28/2026,Thursday,9:04,24,Liempo Sisig,Meal,1,75,75,E-Wallet,Student,50,49
+D3,05/28/2026,Thursday,7:48,25,Longsilog,Dessert,1,50,50,Cash,EMPLOYEE,50,49
+D10,05/28/2026,Thursday,9:17,25,Fried Noodles w/ Siomai,Dessert,2,25,50,Cash,EMPLOYEE,50,48
+D11,05/28/2026,Thursday,10:11,25,Iced Tea Apple,Dessert,1,35,35,E-Wallet,Employee,50,49
+D4,05/28/2026,Thursday,10:38,25,Pork Sisig,Dessert,2,25,50,Cash,Employee,48,46
+D23,05/28/2026,Thursday,13:19,25,Sisigsilog,Dessert,2,50,100,E-Wallet,Employee,49,47
+,05/28/2026,Thursday,15:36,25,Squeeze Lemonade Classic,Dessert,3,50,150,Cash,Student,47,44
+d6,05/28/2026,Thursday,15:50,25,Pork Sisig,Dessert,2,25,50,Cash,STUDENT,49,47
+D8,05/28/2026,Thursday,16:08,25,Coffee Latte,Dessert,3,50,150,Cash,Employee,44,41
+S57,05/28/2026,Thursday,8:29,27,Cucumber Lemonade,Snack,1,110,110,Cash,Student,50,49
+,05/28/2026,Thursday,10:28,27,Special Halo-Halo,Snack,2,95,190,E-Wallet,Student,50,48
+S54,05/28/2026,Thursday,12:52,27,Saging Con Yelo,Snack,1,85,85,Cash,Employee,50,49
+S63,05/28/2026,Thursday,16:17,27,Beef Sisig,Snack,1,110,110,Cash,Employee,49,48
+S55,05/28/2026,Thursday,17:38,27,Mango Tapioca,Snack,2,110,220,Cash,Student,48,46
+S65,05/28/2026,Thursday,17:59,27,Dragonfruit,Snack,2,95,190,Cash,Student,48,46
+S110,05/29/2026,Friday,11:47,1,Bottled Water,Snack,3,89,267,Cash,Employee,50,47
+s#61,05/29/2026,Friday,8:53,2,Red Iced Tea,Snack,2,65,130,Cash,Student,50,48
+S77,05/29/2026,Friday,8:54,2,Real Fruit Mango,Snack,3,35,105,Cash,Student,50,47
+B82,05/29/2026,Friday,9:42,2,Bottled Water,Beverage,1,40,40,Cash,Employee,50,49
+S62,05/29/2026,Friday,11:50,2,Campus Crush Burger,Snack,3,35,105,Cash,STUDENT,50,47
+S73,05/29/2026,Friday,15:22,2,Liempo Sisig,Snack,2,35,70,E-Wallet,Student,47,45
+S83,05/29/2026,Friday,16:17,2,Terror Prof Burger,Snack,4,35,140,Cash,EMPLOYEE,45,41
+S67,05/29/2026,Friday,16:28,2,Milo Cream-O,Snack,4,30,120,Cash,Student,50,46
+s56,05/29/2026,Friday,9:48,3,Milo Cream-O,Snack,1,20,20,Cash,Student,50,49
+D13,05/29/2026,Friday,7:52,6,Banana Con Yelo,Dessert,3,22,66,Cash,Employee,50,47
+D18,05/29/2026,Friday,8:12,6,Saging Con Yelo,Dessert,4,15,60,Cash,Employee,50,46
+M108,05/29/2026,Friday,8:24,6,Campus Crush Burger,Meal,2,60,120,Cash,Student,50,48
+D22,05/29/2026,Friday,8:32,6,Cheese Balls,Dessert,4,22,88,Cash,Employee,47,43
+D26,05/29/2026,Friday,9:05,6,Dean's Burger,Dessert,2,15,30,Cash,Employee,46,44
+M130,05/29/2026,Friday,10:21,6,Kape Caramel,Meal,1,60,60,E-Wallet,EMPLOYEE,48,47
+D15,05/29/2026,Friday,12:45,6,Mais Con Yelo,Dessert,4,30,120,E-Wallet,EMPLOYEE,50,46
+M118,05/29/2026,Friday,13:12,6,Kape Hazelnut,Meal,2,60,120,Cash,Employee,47,45
+M115,05/29/2026,Friday,14:20,6,Saging Con Yelo,Meal,4,60,240,Cash,STUDENT,45,41
+D25,05/29/2026,Friday,16:33,6,Kape Chocolate,Dessert,1,15,15,Cash,STUDENT,44,43
+D35,05/29/2026,Friday,16:41,6,Special Halo-Halo,Dessert,2,30,60,E-Wallet,STUDENT,46,44
+M121,05/29/2026,Friday,17:10,6,Campus Crush Burger,Meal,4,60,240,Cash,Student,41,37
+b79,05/29/2026,Friday,9:25,8,Cheesy FEWA,Beverage,2,38,76,Cash,Employee,50,48
+B86,05/29/2026,Friday,11:05,8,Liempo Sisig,Beverage,1,38,38,E-Wallet,Employee,50,49
+B84,05/29/2026,Friday,13:34,8,Mais Con Yelo,Beverage,3,38,114,Cash,Student,48,45
+B78,05/29/2026,Friday,17:47,8,Terror Prof Burger,Beverage,1,38,38,Cash,Employee,49,48
+S70,05/29/2026,Friday,12:32,9,Kape Hazelnut,Snack,3,198,594,Cash,Employee,50,47
+M103,05/29/2026,Friday,9:18,10,Regular Fries,Meal,2,99,198,Cash,Student,50,48
+M110,05/29/2026,Friday,15:32,10,Mango Spark + Crunch Chips,Meal,2,60,120,E-Wallet,Employee,50,48
+B98,05/29/2026,Friday,11:25,12,Large Fries,Beverage,2,35,70,Cash,Employee,50,48
+B99,05/29/2026,Friday,13:58,12,Cucumber Spark,Beverage,1,35,35,Cash,Student,50,49
+B90,05/29/2026,Friday,14:17,12,Kape Caramel,Beverage,2,35,70,E-Wallet,Student,48,46
+B89,05/29/2026,Friday,17:55,12,Jumbo Fries,Beverage,1,25,25,Cash,Employee,49,48
+M76,05/29/2026,Friday,7:06,13,Sour Cream Crunch,Meal,2,70,140,Cash,Student,50,48
+B60,05/29/2026,Friday,9:28,13,Campus Crush Burger,Beverage,2,25,50,Cash,Student,50,48
+b91,05/29/2026,Friday,9:18,14,Kape Hazelnut,Beverage,2,35,70,Cash,Employee,50,48
+B74,05/29/2026,Friday,10:49,14,Giga Fries,Beverage,3,35,105,Cash,Student,48,45
+B93,05/29/2026,Friday,11:57,14,Dean's Burger,Beverage,3,60,180,E-Wallet,Student,50,47
+B100,05/29/2026,Friday,12:26,14,Kape Chocolate,Beverage,2,60,120,E-Wallet,Student,50,48
+B#72,05/29/2026,Friday,8:12,15,Large Fries,Beverage,1,45,45,Cash,Employee,50,49
+S58,05/29/2026,Friday,7:59,16,Tofu Sisig,Snack,2,65,130,Cash,Employee,50,48
+S75,05/29/2026,Friday,10:43,16,Special Halo-Halo,Snack,1,75,75,Cash,Employee,50,49
+S95,05/29/2026,Friday,11:19,16,Saging Con Yelo,Snack,3,25,75,Cash,STUDENT,50,47
+s84,05/29/2026,Friday,11:22,16,Kape Chocolate,Snack,1,25,25,Cash,Student,48,47
+M138,05/29/2026,Friday,13:04,16,Jumbo Fries,Meal,4,50,200,Cash,Employee,50,46
+S89,05/29/2026,Friday,14:11,16,Classic Crunch,Snack,2,25,50,Cash,STUDENT,47,45
+M102,05/29/2026,Friday,15:44,16,Sour Cream Crunch,Meal,3,50,150,Cash,Student,46,43
+M107,05/29/2026,Friday,17:14,16,Kape Caramel,Meal,2,50,100,E-Wallet,EMPLOYEE,43,41
+S104,05/29/2026,Friday,16:25,17,Dean's Burger,Snack,2,26,52,E-Wallet,Employee,50,48
+B52,05/29/2026,Friday,7:48,18,Cheesy FEWA,Beverage,4,35,140,Cash,Student,50,46
+B69,05/29/2026,Friday,10:27,18,Banana Con Yelo,Beverage,1,35,35,Cash,STUDENT,46,45
+B47,05/29/2026,Friday,16:56,18,Kape Hazelnut,Beverage,2,25,50,E-Wallet,STUDENT,45,43
+B50,05/29/2026,Friday,11:38,19,Giga Fries,Beverage,2,30,60,Cash,Student,50,48
+M79,05/29/2026,Friday,12:00,19,BBQ Crunch,Meal,3,50,150,E-Wallet,EMPLOYEE,50,47
+S106,05/29/2026,Friday,14:15,20,Hash Brown,Snack,2,70,140,Cash,Student,50,48
+m125,05/29/2026,Friday,16:16,22,Beef Samgyup,Meal,2,70,140,E-Wallet,Employee,50,48
+b64,05/29/2026,Friday,8:08,23,Buy 1 Take 1 Shawarma Rice,Beverage,3,40,120,Cash,STUDENT,50,47
+S49,05/29/2026,Friday,9:37,23,Sour Cream Crunch,Snack,4,30,120,E-Wallet,Student,50,46
+S46,05/29/2026,Friday,15:05,23,Large Fries,Snack,2,30,60,Cash,Student,46,44
+D21,05/29/2026,Friday,7:07,25,Tonkatsu w/ Rice,Dessert,3,25,75,Cash,Student,50,47
+D29,05/29/2026,Friday,8:15,25,Kape Caramel,Dessert,1,50,50,Cash,Student,50,49
+,05/29/2026,Friday,8:46,25,Mais Con Yelo,Dessert,2,25,50,E-Wallet,Employee,47,45
+D8,05/29/2026,Friday,9:25,25,Cheesy Biggy Burger B1T1,Dessert,1,35,35,E-Wallet,Student,50,49
+B77,05/29/2026,Friday,16:05,25,Giga Fries,Beverage,2,25,50,Cash,Student,50,48
+S53,05/29/2026,Friday,10:03,27,BBQ Crunch,Snack,2,110,220,Cash,STUDENT,50,48
+d4,05/29/2026,Friday,11:20,27,Ice Lolly,Dessert,1,35,35,Cash,STUDENT,50,49
+D9,05/29/2026,Friday,14:57,27,Chicken Cajun,Dessert,1,35,35,E-Wallet,STUDENT,49,48
+D5,05/29/2026,Friday,16:28,27,Cucumber,Dessert,2,35,70,E-Wallet,STUDENT,48,46
+M101,05/30/2026,Saturday,10:16,3,Mango Spark + Crunch Chips,Meal,2,75,150,Cash,Employee,50,48
+M80,05/30/2026,Saturday,15:31,3,Jumbo Fries,Meal,3,75,225,E-Wallet,Student,50,47
+d27,05/30/2026,Saturday,7:59,6,Dessert Bar,Dessert,3,30,90,Cash,Employee,50,47
+D24,05/30/2026,Saturday,9:44,6,Sour Cream Crunch,Dessert,3,30,90,Cash,STUDENT,47,44
+D12,05/30/2026,Saturday,11:37,6,Tofu Sisig,Dessert,2,15,30,Cash,Student,50,48
+B86,05/30/2026,Saturday,14:16,8,Special Halo-Halo,Beverage,2,38,76,E-Wallet,Employee,50,48
+B83,05/30/2026,Saturday,15:48,8,Tera Fries,Beverage,2,38,76,Cash,Student,50,48
+S74,05/30/2026,Saturday,12:01,9,Mango Spark + Crunch Chips,Snack,1,67,67,E-Wallet,Employee,50,49
+S64,05/30/2026,Saturday,15:38,9,Fiesta Ics,Snack,1,198,198,Cash,STUDENT,50,49
+M109,05/30/2026,Saturday,12:39,10,Tonkatsu w/ Rice,Meal,1,85,85,Cash,STUDENT,50,49
+M111,05/30/2026,Saturday,14:21,11,Jumbo Fries,Meal,3,70,210,E-Wallet,Student,50,47
+s85,05/30/2026,Saturday,14:12,13,Sour Cream Crunch,Snack,1,35,35,Cash,Student,50,49
+B75,05/30/2026,Saturday,14:10,15,Dessert Bar,Beverage,1,35,35,E-Wallet,Student,50,49
+SF23,05/30/2026,Saturday,14:21,15,Cheesy FEWA,Street Food,2,20,40,Cash,Student,50,48
+,05/30/2026,Saturday,11:32,16,Egg Sandwich w/ Cheese,Meal,3,65,195,Cash,Employee,50,47
+S91,05/30/2026,Saturday,13:41,16,Dessert Bar,Snack,2,65,130,Cash,Student,50,48
+M114,05/30/2026,Saturday,16:19,16,Lemon Iced Tea,Meal,4,50,200,Cash,STUDENT,50,46
+M83,05/30/2026,Saturday,13:27,19,BBQ Crunch,Meal,1,50,50,E-Wallet,Employee,50,49
+M60,05/30/2026,Saturday,15:48,19,Ice Lolly,Meal,3,50,150,Cash,Student,50,47
+B77,05/30/2026,Saturday,13:40,25,Mango Spark + Crunch Chips,Beverage,1,25,25,Cash,Employee,50,49
+D14,05/30/2026,Saturday,16:02,25,Chicken Cajun,Dessert,1,50,50,E-Wallet,Student,50,49
+S59,05/30/2026,Saturday,7:18,27,Fishball,Snack,2,85,170,Cash,Student,50,48
+d#7,05/30/2026,Saturday,8:47,27,Ultimate Ube,Dessert,1,35,35,Cash,STUDENT,50,49
+S68,05/30/2026,Saturday,12:44,27,Fiesta Ics,Snack,1,95,95,E-Wallet,STUDENT,50,49
+S90,05/31/2026,Sunday,14:30,17,Hash Brown,Snack,3,35,105,E-Wallet,EMPLOYEE,50,47
+S93,05/31/2026,Sunday,13:21,18,Bagnet + BBQ w/ Rice,Snack,1,49,49,E-Wallet,Student,50,49
+M142,06/01/2026,Monday,11:38,3,Dessert Bar,Meal,2,75,150,Cash,Student,50,48
+M150,06/01/2026,Monday,12:20,3,Chicken Pastil w/ Rice,Meal,3,75,225,Cash,Employee,48,45
+M156,06/01/2026,Monday,9:53,6,Buy 1 Take 1 Meal,Meal,2,60,120,Cash,Student,50,48
+D41,06/01/2026,Monday,9:56,6,Bacon & Cheese,Dessert,4,22,88,Cash,Student,50,46
+D36,06/01/2026,Monday,10:20,6,Tonkatsu w/ Rice,Dessert,5,35,175,Cash,EMPLOYEE,50,45
+d38,06/01/2026,Monday,10:29,6,Banana Con Yelo,Dessert,4,20,80,E-Wallet,Student,50,46
+D34,06/01/2026,Monday,13:33,6,Cheesy FEWA,Dessert,4,22,88,E-Wallet,Employee,46,42
+M131,06/01/2026,Monday,13:47,6,Chicken Cajun,Meal,2,60,120,E-Wallet,Student,48,46
+D33,06/01/2026,Monday,15:04,6,Dessert Bar,Dessert,3,18,54,Cash,STUDENT,50,47
+D30,06/01/2026,Monday,17:53,6,Tofu Sisig,Dessert,4,18,72,Cash,EMPLOYEE,47,43
+M143,06/01/2026,Monday,7:44,10,Special Halo-Halo,Meal,2,70,140,E-Wallet,STUDENT,50,48
+M123,06/01/2026,Monday,12:00,10,Cheesy Biggy Burger B1T1,Meal,4,60,240,E-Wallet,STUDENT,50,46
+m144,06/01/2026,Monday,14:39,10,Chicken Cajun,Meal,3,60,180,E-Wallet,Student,46,43
+,06/01/2026,Monday,7:41,11,Fiesta Ics,Meal,3,119,357,E-Wallet,Employee,50,47
+B107,06/01/2026,Monday,10:39,11,Shawarma Pita Solo,Beverage,2,35,70,Cash,EMPLOYEE,50,48
+b102,06/01/2026,Monday,16:00,11,Bagnet + BBQ w/ Rice,Beverage,2,35,70,Cash,Employee,48,46
+m137,06/01/2026,Monday,16:12,11,Ice Lolly,Meal,1,119,119,Cash,Employee,47,46
+B18,06/01/2026,Wednesday,7:00,12,Bagnet w/ Rice,Beverage,2,35,70,Cash,Student,50,48
+B17,06/01/2026,Wednesday,7:46,12,Cheesy Biggy Burger B1T1,Beverage,2,35,70,Cash,Student,50,48
+B16,06/01/2026,Wednesday,9:00,12,Chicken Cajun,Beverage,2,35,70,E-Wallet,Employee,48,46
+B19,06/01/2026,Wednesday,11:18,12,Buy 1 Take 1 Pad Kra Pao,Beverage,2,25,50,Cash,Student,48,46
+b96,06/01/2026,Monday,13:51,12,Hash Brown,Beverage,3,25,75,Cash,Employee,50,47
+B14,06/01/2026,Wednesday,14:33,12,FEWA Burger,Beverage,2,25,50,Cash,Student,47,45
+,06/01/2026,Monday,16:46,12,Ice Lolly,Beverage,3,25,75,Cash,STUDENT,45,42
+B20,06/01/2026,Wednesday,9:42,13,Tofu Sisig,Beverage,2,25,50,E-Wallet,Employee,50,48
+M4,06/01/2026,Monday,16:34,13,Chicken Cajun,Meal,3,40,120,Cash,Employee,50,47
+B101,06/01/2026,Monday,17:57,14,Lemonade,Beverage,3,25,75,E-Wallet,Student,50,47
+,06/01/2026,Monday,10:02,16,Hash Brown,Snack,4,25,100,E-Wallet,Employee,50,46
+S105,06/01/2026,Monday,10:40,16,Boneless Fried Chicken,Snack,2,25,50,Cash,STUDENT,46,44
+S102,06/01/2026,Monday,12:08,16,Belgian Chocolate,Snack,1,25,25,E-Wallet,Student,44,43
+S113,06/01/2026,Monday,14:56,16,Red Iced Tea,Snack,4,25,100,Cash,Student,43,39
+S113,06/01/2026,Monday,14:07,17,Fiesta Ics,Snack,1,35,35,E-Wallet,Student,50,49
+m124,06/01/2026,Monday,10:12,18,Chicken Pastil w/ Rice,Meal,2,143,286,E-Wallet,Student,50,48
+S111,06/01/2026,Monday,11:35,20,Bottled Water,Snack,3,49,147,Cash,STUDENT,50,47
+S14,06/01/2026,Monday,12:04,20,Sour Cream Crunch,Snack,2,70,140,E-Wallet,Employee,50,48
+M140,06/01/2026,Monday,7:24,22,Lemon Iced Tea,Meal,3,65,195,Cash,Employee,50,47
+M154,06/01/2026,Monday,7:35,22,Shawarma Rice Meal,Meal,2,65,130,Cash,STUDENT,47,45
+M18,06/01/2026,Monday,10:56,22,Gusto Ko 2,Meal,43,90,3870,E-Wallet,Student,50,7
+m135,06/01/2026,Monday,12:25,22,BBQ Crunch,Meal,2,65,130,E-Wallet,Employee,45,43
+M19,06/01/2026,Monday,15:39,22,2pcs Chicken w/ Rice,Meal,2,70,140,Cash,Student,50,48
+B103,06/01/2026,Monday,7:14,23,Buy 1 Take 1 Beef Pepper Rice,Beverage,2,40,80,Cash,STUDENT,50,48
+M21,06/01/2026,Monday,7:35,23,Hamburger w/ Cheese,Meal,4,35,140,Cash,Employee,50,46
+M26,06/01/2026,Monday,8:31,23,BBQ Crunch,Meal,5,35,175,Cash,Employee,46,41
+M23,06/01/2026,Monday,14:50,23,Chicken Cajun,Beverage,2,30,60,E-Wallet,Student,50,48
+M20,06/01/2026,Monday,15:18,23,Tofu Sisig,Meal,4,35,140,E-Wallet,Student,50,46
+B106,06/01/2026,Monday,17:49,23,Dessert Bar,Beverage,2,30,60,Cash,Employee,48,46
+,06/01/2026,Monday,9:10,24,Special Halo-Halo,Meal,3,65,195,Cash,Employee,50,47
+M139,06/01/2026,Monday,9:52,24,Sundae Cup,Meal,3,65,195,Cash,Student,47,44
+M25,06/01/2026,Monday,16:10,24,Fishball,Meal,5,65,325,Cash,Employee,44,39
+B15,06/01/2026,Wednesday,17:51,120,Cheesy Biggy Burger B1T1,Beverage,2,25,50,E-Wallet,Employee,50,48
+S109,06/02/2026,Tuesday,11:33,1,Chicken Cajun,Snack,2,49,98,Cash,Employee,50,48
+S119,06/02/2026,Tuesday,12:54,1,Banana Con Yelo,Snack,2,89,178,Cash,Student,48,46
+S120,06/02/2026,Tuesday,15:52,1,Boneless Fried Chicken,Snack,3,49,147,Cash,Employee,50,47
+S118,06/02/2026,Tuesday,11:19,3,Chicken Pastil w/ Rice,Snack,4,20,80,Cash,Employee,50,46
+M152,06/02/2026,Tuesday,16:38,3,Sour Cream Crunch,Meal,1,75,75,E-Wallet,Student,50,49
+D39,06/02/2026,Tuesday,7:29,6,Chicken Cajun,Dessert,3,15,45,E-Wallet,STUDENT,50,47
+D37,06/02/2026,Tuesday,10:01,6,Hash Brown,Dessert,2,18,36,E-Wallet,Student,50,48
+M146,06/02/2026,Tuesday,10:02,6,Saging Con Yelo,Meal,1,60,60,E-Wallet,EMPLOYEE,50,49
+M148,06/02/2026,Tuesday,10:52,6,Gusto Ko 2,Meal,3,60,180,Cash,Employee,49,46
+,06/02/2026,Tuesday,12:26,6,Buy 1 Take 1 Meal,Dessert,4,20,80,Cash,EMPLOYEE,50,46
+D42,06/02/2026,Tuesday,15:45,6,Cheesy Biggy Burger B1T1,Dessert,2,20,40,Cash,Employee,46,44
+M132,06/02/2026,Tuesday,9:16,10,Chicken Cajun,Meal,3,60,180,Cash,Employee,50,47
+M147,06/02/2026,Tuesday,10:57,10,Chicken Pastil w/ Rice,Meal,4,99,396,Cash,STUDENT,50,46
+,06/02/2026,Tuesday,12:40,10,Ice Lolly,Meal,1,85,85,E-Wallet,Student,50,49
+m129,06/02/2026,Tuesday,14:52,10,Red Iced Tea,Meal,2,60,120,E-Wallet,Student,47,45
+,06/02/2026,Tuesday,15:40,10,Tofu Sisig,Meal,1,85,85,Cash,Student,49,48
+M159,06/02/2026,Tuesday,15:51,10,Chicken Sisig,Meal,3,99,297,E-Wallet,Student,46,43
+B92,06/02/2026,Tuesday,7:29,11,Chicken Cajun,Beverage,2,35,70,Cash,STUDENT,50,48
+S122,06/02/2026,Tuesday,7:32,13,1pc Chicken w/ Rice & Drinks,Snack,1,35,35,Cash,Student,50,49
+S121,06/02/2026,Tuesday,8:03,13,Tonkatsu w/ Rice,Snack,3,35,105,E-Wallet,Student,49,46
+sf24,06/02/2026,Tuesday,15:16,15,Chicken Cajun,Street Food,2,20,40,Cash,Employee,50,48
+,06/02/2026,Tuesday,8:01,16,Squeeze Lemonade w/ Yakult,Meal,2,50,100,Cash,Employee,50,48
+,06/02/2026,Tuesday,11:08,16,Watermelon,Meal,2,65,130,E-Wallet,Student,50,48
+S107,06/02/2026,Tuesday,7:02,17,Bagnet + BBQ w/ Rice,Snack,3,30,90,E-Wallet,Student,50,47
+S117,06/02/2026,Tuesday,11:23,17,Melon,Snack,2,26,52,E-Wallet,EMPLOYEE,50,48
+S115,06/02/2026,Tuesday,7:29,20,Buy 1 Take 1 Beef Pepper Rice,Snack,1,70,70,Cash,Employee,50,49
+s99,06/02/2026,Tuesday,16:59,20,Sundae Cup,Snack,4,49,196,Cash,STUDENT,50,46
+M141,06/02/2026,Tuesday,7:31,24,Ultimate Ube,Meal,2,65,130,E-Wallet,Employee,50,48
+m122,06/02/2026,Tuesday,14:30,24,Dessert Bar,Meal,2,65,130,E-Wallet,Student,48,46
+D31,06/02/2026,Tuesday,12:03,27,Lemonade,Dessert,3,35,105,Cash,Student,50,47
+S108,06/03/2026,Wednesday,9:39,1,Hash Brown,Snack,1,89,89,E-Wallet,Student,50,49
+S112,06/03/2026,Wednesday,10:58,1,Tofu Sisig,Snack,1,89,89,Cash,Student,49,48
+S98,06/03/2026,Wednesday,10:44,2,Boneless Fried Chicken,Snack,4,35,140,Cash,Employee,50,46
+,06/03/2026,Wednesday,10:57,2,FEWA Burger,Snack,2,35,70,E-Wallet,STUDENT,46,44
+s101,06/03/2026,Wednesday,11:07,2,1pc Chicken w/ Rice & Drinks,Snack,3,35,105,E-Wallet,Student,50,47
+B108,06/03/2026,Wednesday,13:57,2,Boneless Fried Chicken,Beverage,2,50,100,Cash,Student,50,48
+S97,06/03/2026,Wednesday,15:45,2,Fiesta Ics,Snack,2,35,70,E-Wallet,Student,47,45
+S114,06/03/2026,Wednesday,11:39,3,Liempo Sisig,Snack,2,20,40,Cash,Employee,50,48
+m136,06/03/2026,Wednesday,11:55,6,Belgian Chocolate,Meal,4,60,240,Cash,Student,50,46
+D32,06/03/2026,Wednesday,13:07,6,Carrot-Based Churros,Dessert,2,15,30,Cash,STUDENT,50,48
+,06/03/2026,Wednesday,15:09,6,Cucumber,Dessert,5,30,150,E-Wallet,Student,50,45
+,06/03/2026,Wednesday,17:11,6,Mega Stick,Dessert,5,20,100,E-Wallet,Student,50,45
+m157,06/03/2026,Wednesday,14:39,10,Squash Based Churros,Meal,2,60,120,Cash,STUDENT,50,48
+M155,06/03/2026,Wednesday,11:28,11,Hash Brown,Meal,2,70,140,Cash,STUDENT,50,48
+M153,06/03/2026,Wednesday,16:58,11,Milky Watermelon,Meal,1,70,70,E-Wallet,Student,48,47
+b97,06/03/2026,Wednesday,12:44,13,Bagnet w/ Rice,Beverage,2,40,80,E-Wallet,Student,50,48
+S110,06/03/2026,Wednesday,12:55,16,Sundae Cup,Snack,3,25,75,Cash,Employee,50,47
+S100,06/03/2026,Wednesday,17:35,16,Assorted Churros,Snack,1,75,75,Cash,STUDENT,50,49
+s97,06/03/2026,Wednesday,10:28,17,Hamburger w/ Cheese,Snack,1,30,30,Cash,EMPLOYEE,50,49
+B104,06/03/2026,Wednesday,14:39,18,Chicken Pastil w/ Rice,Beverage,1,40,40,E-Wallet,Student,50,49
+M149,06/03/2026,Wednesday,8:44,22,Gusto Ko 2,Meal,3,70,210,Cash,Student,50,47
+S123,06/04/2026,Thursday,7:10,1,Tofu Sisig,Snack,1,49,49,E-Wallet,Student,50,49
+m128,06/04/2026,Thursday,13:35,6,Carrot-Based Churros,Meal,3,60,180,E-Wallet,STUDENT,50,47
+m126,06/04/2026,Thursday,14:03,6,Shawarma Rice Meal,Meal,1,60,60,E-Wallet,EMPLOYEE,47,46
+D40,06/04/2026,Thursday,14:27,6,Bacon & Cheese,Dessert,2,18,36,Cash,Student,50,48
+,06/04/2026,Thursday,8:57,11,Milky Watermelon,Meal,2,70,140,Cash,Employee,50,48
+B94,06/04/2026,Thursday,8:13,14,Hash Brown,Beverage,1,35,35,E-Wallet,Employee,50,49
+B105,06/04/2026,Thursday,14:11,14,Bottled Water,Beverage,1,35,35,Cash,EMPLOYEE,49,48
+S116,06/04/2026,Thursday,9:57,18,Chicken Cajun,Snack,3,49,147,Cash,Student,50,47
+M145,06/04/2026,Thursday,10:23,18,C2 Apple,Meal,2,143,286,E-Wallet,Student,50,48
+b95,06/04/2026,Thursday,14:05,18,Beef Samgyup,Beverage,1,50,50,E-Wallet,Student,50,49
+M151,06/04/2026,Thursday,12:34,22,Cheese Balls,Meal,1,65,65,E-Wallet,Student,50,49
+M158,06/05/2026,Friday,15:20,3,FEWA Burger,Meal,2,75,150,E-Wallet,Employee,50,48
+S103,06/05/2026,Friday,9:19,16,Chicken Cajun,Snack,1,75,75,Cash,Student,50,49
+M132,06/05/2026,Friday,9:41,16,2pcs Chicken w/ Rice,Meal,3,50,150,E-Wallet,Employee,50,47
+M127,06/05/2026,Friday,12:41,16,Shawarma Pita Solo,Meal,4,50,200,Cash,Student,47,43
+M133,06/06/2026,Saturday,7:58,3,Liempo Sisig,Meal,1,75,75,E-Wallet,Student,50,49
+D28,06/06/2026,Saturday,9:55,6,Ice Lolly,Dessert,2,22,44,Cash,Student,50,48
+m134,06/07/2026,Sunday,7:13,6,Squeeze Lemonade w/ Yakult,Meal,3,60,180,Cash,STUDENT,50,47
+M33,06/09/2026,Tuesday,8:04,16,1pc Chicken w/ Rice & Drinks,Meal,4,50,200,Cash,Employee,50,46
+M35,06/09/2026,Tuesday,8:09,16,Ultimate Ube,Meal,2,60,120,E-Wallet,Student,50,48
+M36,06/09/2026,Tuesday,11:49,16,Chicken Sisig,Meal,1,65,65,Cash,Student,50,49
+M34,06/09/2026,Tuesday,16:40,16,Buy 1 Take 1 Meal,Meal,1,65,65,Cash,Student,49,48
+M32,06/09/2026,Tuesday,17:17,16,Bagnet + BBQ w/ Rice,Meal,2,50,100,E-Wallet,Employee,46,44
+S31,06/09/2026,Tuesday,13:20,166,1pc Chicken w/ Rice & Drinks,Snack,2,65,130,Cash,Student,50,48
+S32,06/11/2026,Wednesday,14:08,16,Cheese Balls,Snack,4,40,160,Cash,Student,50,46
+S33,06/12/2026,Wednesday,7:17,16,Squash Based Churros,Snack,2,75,150,Cash,Student,50,48
+S34,06/13/2026,Wednesday,9:53,16,Buy 1 Take 1 Meal,Snack,3,65,195,E-Wallet,Student,50,47
+S35,06/14/2026,Wednesday,17:44,16,Chicken Cajun,Snack,1,75,75,E-Wallet,Employee,50,49
+S10,1/31/2026,Saturday,9:12,2,Assorted Churros,Snack,3,35,105,Cash,Student,50,47
+M14,1/31/2026,Saturday,10:21,13,Chicken Pastil w/ Rice,Meal,2,70,140,E-Wallet,Employee,50,48
+B26,1/31/2026,Saturday,8:03,14,Sundae Cup,Beverage,4,25,100,Cash,Employee,50,46
+B24,1/31/2026,Saturday,10:17,14,Liempo Sisig,Beverage,4,35,140,E-Wallet,Employee,50,46
+B25,1/31/2026,Saturday,10:19,14,Dessert Bar,Beverage,4,25,100,E-Wallet,Employee,50,46
+B21,1/31/2026,Saturday,12:07,14,Beef Samgyup,Beverage,2,45,90,Cash,Student,46,44
+B23,1/31/2026,Saturday,14:24,14,Egg Sandwich w/ Cheese,Beverage,3,45,135,Cash,Student,50,47
+B22,1/31/2026,Saturday,17:04,14,Fiesta Ics,Beverage,2,35,70,Cash,Student,46,44
+SF21,1/31/2026,Saturday,7:03,15,Red Iced Tea,Street Food,3,20,60,E-Wallet,Student,50,47
+SF18,1/31/2026,Saturday,8:26,15,Egg Sandwich w/ Cheese,Street Food,3,20,60,Cash,Employee,50,47
+SF20,1/31/2026,Saturday,13:04,15,Sago't Gulaman,Street Food,3,20,60,E-Wallet,Employee,50,47
+SF19,1/31/2026,Saturday,13:43,15,Watermelon,Street Food,2,25,50,Cash,Employee,50,48
+SF22,1/31/2026,Saturday,15:48,15,Bottled Water,Street Food,4,25,100,Cash,Student,50,46
+S22,1/31/2026,Saturday,7:13,20,Gusto Ko 2,Snack,2,45,90,Cash,Student,50,48
+S24,1/31/2026,Saturday,9:46,20,Mango Spark,Snack,5,49,245,E-Wallet,Student,50,45
+S23,1/31/2026,Saturday,12:32,20,Assorted Churros,Snack,3,70,210,Cash,Student,50,47

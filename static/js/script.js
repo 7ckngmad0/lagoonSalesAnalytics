@@ -1,4 +1,11 @@
-// Helper function to show alerts
+// ─── State ───────────────────────────────────────────────────────────────────
+// Stores the analysis data fetched after cleaning, so Generate Charts can use it
+let cachedAnalysisData = null;
+
+// Track Chart.js instances so we can destroy before re-rendering
+const chartInstances = {};
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 function showAlert(message, type = 'info') {
     const alertHtml = `
         <div class="alert alert-${type} alert-dismissible fade show" role="alert">
@@ -8,109 +15,239 @@ function showAlert(message, type = 'info') {
     `;
     const container = document.getElementById('alertContainer');
     container.innerHTML = alertHtml;
-    setTimeout(() => {
-        container.innerHTML = '';
-    }, 5000);
+    setTimeout(() => { container.innerHTML = ''; }, 5000);
 }
 
-// Helper to format currency
 function formatCurrency(amount) {
     return '₱' + parseFloat(amount).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-//display raw data
-function displayRawData(rawData){
-    const tableHead = document.getElementById('rawDataHead');
-    const tableBody = document.getElementById('rawDataBody');
-
-    //clears any existing table contents
-    tableHead.innerHTML = '';
-    tableBody.innerHTML = '';
-
-    //checks if data exists
-    if(!rawData || rawData.length === 0){
-        tableBody.innerHTML = '<tr><td colspan="100%" class="text-center">No data available</td></tr>';
-        return;
-    }
-
-    //create table header
-    const headerRow = document.createElement('tr');
-
-    //use keys of the first objects as column names
-    Object.keys(rawData[0]).forEach(column =>{
-        const th = document.createElement('th');
-        th.textContent = column;
-        headerRow.appendChild(th);
-    });
-
-    tableHead.appendChild(headerRow);
-
-    //create table rows
-    rawData.forEach(row => {
-        const tr = document.createElement('tr');
-
-        //add each cell value to the row
-        Object.values(row).forEach(value => {
-            const td = document.createElement('td');
-            td.textContent = value;
-            tr.appendChild(td);
-        });
-
-        tableBody.appendChild(tr);
-    });
-
-    //display the number of rows
-    document.getElementById('rawDataRowCount').textContent = `Rows: ${rawData.length}`;
-
+// ─── Section visibility ───────────────────────────────────────────────────────
+function hideAllSections() {
+    ['datasetInfoContainer', 'rawDataContainer', 'cleanedDataContainer',
+     'metricsContainer', 'chartsContainer', 'topItemsContainer']
+        .forEach(id => document.getElementById(id).style.display = 'none');
 }
 
-//display cleaned data
-function displayCleanedData(cleanData){
-    const tableHead = document.getElementById('cleanedDataHead');
-    const tableBody = document.getElementById('cleanedDataBody');
+// ─── Table renderers ──────────────────────────────────────────────────────────
+function renderDataTable(type, rows, columns) {
+    const head = document.getElementById(`${type}DataHead`);
+    const body = document.getElementById(`${type}DataBody`);
+    const searchInput = document.getElementById(`${type}DataSearch`);
 
-    //clears any existing table contents
-    tableHead.innerHTML = '';
-    tableBody.innerHTML = '';
+    head.innerHTML = '<tr>' + columns.map(col => `<th>${col}</th>`).join('') + '</tr>';
 
-    //checks if data exists
-    if(!cleanData || cleanData.length === 0){
-        tableBody.innerHTML = '<tr><td colspan="100%" class="text-center">No data available</td></tr>';
-        return;
+    function renderBody(filteredRows) {
+        body.innerHTML = '';
+        filteredRows.forEach(row => {
+            const cells = columns.map(col => {
+                let value = row[col];
+                if (typeof value === 'number') value = value.toFixed(2);
+                return `<td>${value ?? '-'}</td>`;
+            }).join('');
+            body.innerHTML += `<tr>${cells}</tr>`;
+        });
     }
 
-    //create table header
-    const headerRow = document.createElement('tr');
+    renderBody(rows);
 
-    //use keys of the first objects as column names
-    Object.keys(cleanData[0]).forEach(column =>{
-        const th = document.createElement('th');
-        th.textContent = column;
-        headerRow.appendChild(th);
+    // Remove old listener to avoid duplicates
+    const freshInput = searchInput.cloneNode(true);
+    searchInput.parentNode.replaceChild(freshInput, searchInput);
+    freshInput.addEventListener('keyup', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filtered = rows.filter(row =>
+            columns.some(col => String(row[col]).toLowerCase().includes(query))
+        );
+        renderBody(filtered);
     });
-
-    tableHead.appendChild(headerRow);
-
-    //create table rows
-    cleanData.forEach(row => {
-        const tr = document.createElement('tr');
-
-        //add each cell value to the row
-        Object.values(row).forEach(value => {
-            const td = document.createElement('td');
-            td.textContent = value;
-            tr.appendChild(td);
-        });
-
-        tableBody.appendChild(tr);
-    });
-
-    //display the number of rows
-    document.getElementById('cleanedDataRowCount').textContent = `Rows: ${cleanData.length}`;
-
 }
 
-// File upload handler
+// ─── Chart rendering (Chart.js – dynamic, based on CSV data) ─────────────────
+function destroyChart(id) {
+    if (chartInstances[id]) {
+        chartInstances[id].destroy();
+        delete chartInstances[id];
+    }
+}
+
+const MAROON  = 'rgba(128, 0, 0, 0.85)';
+const GOLD    = 'rgba(255, 215, 0, 0.85)';
+const PALETTE = [
+    '#800000','#FFD700','#B22222','#DAA520','#8B0000',
+    '#CD853F','#A0522D','#D2691E','#DC143C','#C0392B'
+];
+
+function renderCharts(analysisData) {
+    // ── 1. Sales by Food Item (Top 10) – horizontal bar ──────────────────────
+    destroyChart('foodItemChart');
+    const foodEntries = Object.entries(analysisData.best_selling_food)
+        .sort((a, b) => b[1] - a[1]).slice(0, 10);
+    chartInstances['foodItemChart'] = new Chart(
+        document.getElementById('foodItemChart'),
+        {
+            type: 'bar',
+            data: {
+                labels: foodEntries.map(([k]) => k),
+                datasets: [{
+                    label: 'Units Sold',
+                    data: foodEntries.map(([, v]) => Math.round(v)),
+                    backgroundColor: PALETTE
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                plugins: { legend: { display: false } }
+            }
+        }
+    );
+
+    // ── 2. Sales by Category – pie ────────────────────────────────────────────
+    destroyChart('categoryChart');
+    const catEntries = Object.entries(analysisData.sales_by_category || {});
+    if (catEntries.length) {
+        chartInstances['categoryChart'] = new Chart(
+            document.getElementById('categoryChart'),
+            {
+                type: 'pie',
+                data: {
+                    labels: catEntries.map(([k]) => k),
+                    datasets: [{
+                        data: catEntries.map(([, v]) => parseFloat(v)),
+                        backgroundColor: PALETTE
+                    }]
+                },
+                options: { responsive: true }
+            }
+        );
+    }
+
+    // ── 3. Sales by Stall – bar ───────────────────────────────────────────────
+    destroyChart('stallChart');
+    const stallEntries = Object.entries(analysisData.sales_by_stall || {})
+        .sort((a, b) => b[1] - a[1]);
+    if (stallEntries.length) {
+        chartInstances['stallChart'] = new Chart(
+            document.getElementById('stallChart'),
+            {
+                type: 'bar',
+                data: {
+                    labels: stallEntries.map(([k]) => `Stall ${k}`),
+                    datasets: [{
+                        label: 'Revenue (₱)',
+                        data: stallEntries.map(([, v]) => parseFloat(v)),
+                        backgroundColor: MAROON
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } }
+                }
+            }
+        );
+    }
+
+    // ── 4. Payment Methods – doughnut ─────────────────────────────────────────
+    destroyChart('paymentChart');
+    const payEntries = Object.entries(analysisData.payment_method_breakdown || {});
+    if (payEntries.length) {
+        chartInstances['paymentChart'] = new Chart(
+            document.getElementById('paymentChart'),
+            {
+                type: 'doughnut',
+                data: {
+                    labels: payEntries.map(([k]) => k),
+                    datasets: [{
+                        data: payEntries.map(([, v]) => parseFloat(v)),
+                        backgroundColor: PALETTE
+                    }]
+                },
+                options: { responsive: true }
+            }
+        );
+    }
+
+    // ── 5. Customer Types – pie ───────────────────────────────────────────────
+    destroyChart('customerChart');
+    const custEntries = Object.entries(analysisData.customer_type_breakdown || {});
+    if (custEntries.length) {
+        chartInstances['customerChart'] = new Chart(
+            document.getElementById('customerChart'),
+            {
+                type: 'pie',
+                data: {
+                    labels: custEntries.map(([k]) => k),
+                    datasets: [{
+                        data: custEntries.map(([, v]) => parseFloat(v)),
+                        backgroundColor: [MAROON, GOLD, '#B22222', '#DAA520']
+                    }]
+                },
+                options: { responsive: true }
+            }
+        );
+    }
+
+    // ── 6. Sales by Day – line ────────────────────────────────────────────────
+    destroyChart('dayChart');
+    const dayOrder = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+    const dayData  = analysisData.sales_by_day || {};
+    const orderedDays = dayOrder.filter(d => d in dayData);
+    if (orderedDays.length) {
+        chartInstances['dayChart'] = new Chart(
+            document.getElementById('dayChart'),
+            {
+                type: 'line',
+                data: {
+                    labels: orderedDays,
+                    datasets: [{
+                        label: 'Revenue (₱)',
+                        data: orderedDays.map(d => parseFloat(dayData[d])),
+                        borderColor: MAROON,
+                        backgroundColor: 'rgba(128,0,0,0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: GOLD
+                    }]
+                },
+                options: { responsive: true }
+            }
+        );
+    }
+}
+
+// ─── Top-items renderer ───────────────────────────────────────────────────────
+function renderTopItems(data) {
+    const colors = ['danger', 'warning', 'info', 'success', 'secondary'];
+
+    function listHTML(entries, formatter) {
+        return entries.map(([item, val], i) =>
+            `<div class="d-flex justify-content-between mb-2">
+                <span><span class="badge bg-${colors[i] || 'secondary'} me-2">#${i + 1}</span>${item}</span>
+                <span class="fw-bold">${formatter(val)}</span>
+             </div>`
+        ).join('');
+    }
+
+    document.getElementById('bestSellingList').innerHTML = listHTML(
+        Object.entries(data.best_selling_food).sort((a,b)=>b[1]-a[1]).slice(0,5),
+        v => `${Math.round(v)} units`
+    );
+    document.getElementById('highestEarningList').innerHTML = listHTML(
+        Object.entries(data.highest_earning_food).sort((a,b)=>b[1]-a[1]).slice(0,5),
+        formatCurrency
+    );
+    document.getElementById('highestDaySale').innerHTML = listHTML(
+        Object.entries(data.sales_by_day).sort((a,b)=>b[1]-a[1]).slice(0,5),
+        formatCurrency
+    );
+    document.getElementById('highestEarningStall').innerHTML = listHTML(
+        Object.entries(data.sales_by_stall).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([k,v])=>[`Stall ${k}`,v]),
+        formatCurrency
+    );
+}
+
+// ─── Event: File upload ───────────────────────────────────────────────────────
 document.getElementById('fileInput').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -120,211 +257,27 @@ document.getElementById('fileInput').addEventListener('change', async (e) => {
 
     try {
         showAlert('Uploading file...', 'info');
-        const response = await fetch('/api/upload', {
-            method: 'POST',
-            body: formData
-        });
-
+        const response = await fetch('/api/upload', { method: 'POST', body: formData });
         const data = await response.json();
         if (!response.ok) throw new Error(data.error);
 
-        // Update file info
-        document.getElementById('fileName').textContent = data.data.file_name;
-        document.getElementById('fileRows').textContent = data.data.rows.toLocaleString();
-        document.getElementById('fileCols').textContent = data.data.columns;
+        document.getElementById('fileName').textContent    = data.data.file_name;
+        document.getElementById('fileRows').textContent    = data.data.rows.toLocaleString();
+        document.getElementById('fileCols').textContent    = data.data.columns;
         document.getElementById('fileInfoCard').style.display = 'block';
 
-        document.getElementById('cleanDataBtn').disabled = false;
-        document.getElementById('showDatasetInfoBtn').disabled = false;
-        document.getElementById('showRawDataBtn').disabled = false;
-        showAlert('File uploaded successfully!', 'success');
-        document.getElementById('rawDataContainer').style.display = 'block';
-        displayRawData(data.data.preview);
+        // Only unlock buttons that make sense before cleaning
+        document.getElementById('cleanDataBtn').disabled        = false;
+        document.getElementById('showDatasetInfoBtn').disabled  = false;
+        document.getElementById('showRawDataBtn').disabled      = false;
 
+        showAlert('File uploaded successfully! Click "Clean Data" to proceed.', 'success');
     } catch (error) {
         showAlert('Error uploading file: ' + error.message, 'danger');
     }
 });
 
-// Clean data handler
-document.getElementById('cleanDataBtn').addEventListener('click', async () => {
-    try {
-        document.getElementById('loadingSpinner').style.display = 'block';
-        showAlert('Cleaning data...', 'info');
-
-        const response = await fetch('/api/clean-data', { method: 'POST' });
-        const data = await response.json();
-
-        if (!response.ok) throw new Error(data.error);
-
-        document.getElementById('originalRows').textContent = data.original_rows.toLocaleString();
-        document.getElementById('cleanedRows').textContent = data.cleaned_rows.toLocaleString();
-        document.getElementById('removedRows').textContent = data.removed_rows.toLocaleString();
-        document.getElementById('cleaningInfoCard').style.display = 'block';
-        document.getElementById('downloadBtn').disabled = false;
-        document.getElementById('showCleanedDataBtn').disabled = false;
-        document.getElementById('generateChartsBtn').disabled = false;
-
-        showAlert('Data cleaned successfully!', 'success');
-        document.getElementById('cleanedDataContainer').style.display = 'block';
-        displayCleanedData(data.preview);
-
-        loadAnalysis();
-    } catch (error) {
-        showAlert('Error cleaning data: ' + error.message, 'danger');
-    } finally {
-        document.getElementById('loadingSpinner').style.display = 'none';
-    }
-});
-
-// Load analysis
-async function loadAnalysis() {
-    try {
-        document.getElementById('loadingSpinner').style.display = 'block';
-
-        // Load metrics
-        const analysisResponse = await fetch('/api/analyze');
-        const analysisData = await analysisResponse.json();
-        if (!analysisResponse.ok) throw new Error(analysisData.error);
-
-        // Load chart data
-        const chartResponse = await fetch('/api/chart-data');
-        const chartData = await chartResponse.json();
-        if (!chartResponse.ok) throw new Error(chartData.error);
-
-        // Update metrics
-        document.getElementById('totalRevenue').textContent = formatCurrency(analysisData.total_revenue);
-        document.getElementById('avgSales').textContent = formatCurrency(analysisData.average_sales);
-        document.getElementById('totalQty').textContent = Math.round(analysisData.total_quantity_sold).toLocaleString();
-        
-        // Count total transactions
-        const totalTransactions = Object.keys(analysisData.best_selling_food).length;
-        document.getElementById('totalTrans').textContent = totalTransactions.toLocaleString();
-
-        document.getElementById('metricsContainer').style.display = 'block';
-
-        // Render charts
-        renderCharts(chartData);
-
-        // Render top items
-        renderTopItems(analysisData);
-        document.getElementById('topItemsContainer').style.display = 'block';
-
-        document.getElementById('chartsContainer').style.display = 'block';
-    } catch (error) {
-        showAlert('Error loading analysis: ' + error.message, 'danger');
-    } finally {
-        document.getElementById('loadingSpinner').style.display = 'none';
-    }
-}
-
-// Render charts
-function renderCharts(data) {
-    // Map chart names to image element IDs
-    const chartMapping = {
-        'sales_by_food': 'foodItemChart',
-        'sales_by_category': 'categoryChart',
-        'sales_by_stall': 'stallChart',
-        'payment_methods': 'paymentChart',
-        'customer_types': 'customerChart',
-        'sales_by_day': 'dayChart'
-    };
-
-    // Load chart images
-    for (const [chartName, elementId] of Object.entries(chartMapping)) {
-        const element = document.getElementById(elementId);
-        if (data[chartName]) {
-            element.src = data[chartName];
-        }
-    }
-}
-
-// Render top items
-function renderTopItems(data) {
-    // Best selling items
-    const bestSellingList = document.getElementById('bestSellingList');
-    bestSellingList.innerHTML = '';
-    const bestSelling = data.best_selling_food;
-    const bestItems = Object.entries(bestSelling).sort((a,b) => b[1] - a[1]).slice(0, 5); 
-    bestItems.forEach(([item, qty], index) => {
-        const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
-        bestSellingList.innerHTML += `
-            <div class="d-flex justify-content-between mb-2">
-                <span>${badge}${item}</span>
-                <span class="fw-bold">${Math.round(qty)} units</span>
-            </div>
-        `;
-    });
-
-    // Highest earning items
-    const highestEarningList = document.getElementById('highestEarningList');
-    highestEarningList.innerHTML = '';
-    const highestEarning = data.highest_earning_food;
-    const topEarning = Object.entries(highestEarning).sort((a, b) => b[1] - a[1]).slice(0, 5);
-    topEarning.forEach(([item, amount], index) => {
-        const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
-        highestEarningList.innerHTML += `
-            <div class="d-flex justify-content-between mb-2">
-                <span>${badge}${item}</span>
-                <span class="fw-bold">${formatCurrency(amount)}</span>
-            </div>
-        `;
-    });
-
-    //Highest Day Sales 
-    const highestDaySale = document.getElementById('highestDaySale');
-    highestDaySale.innerHTML = '';
-    const highestDay = data.sales_by_day;
-    const topDay = Object.entries(highestDay).sort((a, b) => b[1] - a[1]).slice(0, 5);
-    topDay.forEach(([day, amount], index) => {
-        const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
-        highestDaySale.innerHTML += `
-            <div class="d-flex justify-content-between mb-2">
-                <span>${badge}${day}</span>
-                <span class="fw-bold">${formatCurrency(amount)}</span>
-            </div>
-        `;
-    });
-
-    //Highest Earning Stall
-    const highestEarningStall = document.getElementById('highestEarningStall');
-    highestEarningStall.innerHTML = '';
-    const highestEarner = data.sales_by_stall;
-    const topEarner = Object.entries(highestEarner).sort((a, b) => b[1] - a[1]).slice(0, 5);
-    topEarner.forEach(([stall, amount], index) => {
-        const badge = `<span class="badge bg-${['danger', 'warning', 'info', 'success', 'secondary'][index] || 'secondary'} me-2">#${index + 1}</span>`;
-        highestEarningStall.innerHTML += `
-            <div class="d-flex justify-content-between mb-2">
-                <span>${badge}Stall ${stall}</span>
-                <span class="fw-bold">${formatCurrency(amount)}</span>
-            </div>
-        `;
-    });
-}
-
-// Download cleaned data
-document.getElementById('downloadBtn').addEventListener('click', async () => {
-    try {
-        const response = await fetch('/api/download-cleaned');
-        if (!response.ok) throw new Error('Download failed');
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'lagoon_sales_cleaned.csv';
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        a.remove();
-
-        showAlert('Data downloaded successfully!', 'success');
-    } catch (error) {
-        showAlert('Error downloading data: ' + error.message, 'danger');
-    }
-});
-
-// Load sample data
+// ─── Event: Load sample data ──────────────────────────────────────────────────
 document.getElementById('sampleBtn').addEventListener('click', async () => {
     try {
         document.getElementById('loadingSpinner').style.display = 'block';
@@ -332,18 +285,29 @@ document.getElementById('sampleBtn').addEventListener('click', async () => {
 
         const response = await fetch('/api/sample-data');
         const data = await response.json();
-
         if (!response.ok) throw new Error(data.error);
 
-        document.getElementById('fileName').textContent = data.data.file_name;
-        document.getElementById('fileRows').textContent = data.data.rows.toLocaleString();
-        document.getElementById('fileCols').textContent = data.data.columns;
+        document.getElementById('fileName').textContent       = data.data.file_name;
+        document.getElementById('fileRows').textContent       = data.data.rows.toLocaleString();
+        document.getElementById('fileCols').textContent       = data.data.columns;
         document.getElementById('fileInfoCard').style.display = 'block';
-        document.getElementById('cleanDataBtn').disabled = false;
-        document.getElementById('showDatasetInfoBtn').disabled = false;
-        document.getElementById('showRawDataBtn').disabled = false;
 
-        showAlert('Sample data loaded successfully! Click "Clean Data" to proceed.', 'success');
+        // Unlock pre-cleaning buttons
+        document.getElementById('cleanDataBtn').disabled       = false;
+        document.getElementById('showDatasetInfoBtn').disabled = false;
+        document.getElementById('showRawDataBtn').disabled     = false;
+
+        // Show a raw data preview so the user sees something happened
+        const rawResp = await fetch('/api/raw-data');
+        const rawData = await rawResp.json();
+        if (rawResp.ok) {
+            hideAllSections();
+            renderDataTable('raw', rawData.data, rawData.columns);
+            document.getElementById('rawDataContainer').style.display = 'block';
+            document.getElementById('rawDataRowCount').textContent    = `Rows: ${rawData.total_rows.toLocaleString()}`;
+        }
+
+        showAlert('Sample data loaded! Click "Clean Data" to continue.', 'success');
     } catch (error) {
         showAlert('Error loading sample data: ' + error.message, 'danger');
     } finally {
@@ -351,45 +315,83 @@ document.getElementById('sampleBtn').addEventListener('click', async () => {
     }
 });
 
-// Hide all main content sections
-function hideAllSections() {
-    document.getElementById('datasetInfoContainer').style.display = 'none';
-    document.getElementById('rawDataContainer').style.display = 'none';
-    document.getElementById('cleanedDataContainer').style.display = 'none';
-    document.getElementById('metricsContainer').style.display = 'none';
-    document.getElementById('chartsContainer').style.display = 'none';
-    document.getElementById('topItemsContainer').style.display = 'none';
-}
+// ─── Event: Clean Data ────────────────────────────────────────────────────────
+document.getElementById('cleanDataBtn').addEventListener('click', async () => {
+    try {
+        document.getElementById('loadingSpinner').style.display = 'block';
+        showAlert('Cleaning data...', 'info');
 
-// Show Dataset Info
+        const response = await fetch('/api/clean-data', { method: 'POST' });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error);
+
+        // Show cleaning summary card
+        document.getElementById('originalRows').textContent     = data.original_rows.toLocaleString();
+        document.getElementById('cleanedRows').textContent      = data.cleaned_rows.toLocaleString();
+        document.getElementById('removedRows').textContent      = data.removed_rows.toLocaleString();
+        document.getElementById('cleaningInfoCard').style.display = 'block';
+
+        // Unlock the rest of the navigation buttons
+        document.getElementById('showCleanedDataBtn').disabled  = false;
+        document.getElementById('generateChartsBtn').disabled   = false;
+        document.getElementById('downloadBtn').disabled         = false;
+
+        // ── Fetch and cache analysis data (metrics + chart source) ──────────
+        const aResp = await fetch('/api/analyze');
+        const aData = await aResp.json();
+        if (!aResp.ok) throw new Error(aData.error);
+        cachedAnalysisData = aData;
+
+        // Show key metrics immediately after cleaning
+        document.getElementById('totalRevenue').textContent = formatCurrency(aData.total_revenue);
+        document.getElementById('avgSales').textContent     = formatCurrency(aData.average_sales);
+        document.getElementById('totalQty').textContent     = Math.round(aData.total_quantity_sold).toLocaleString();
+        document.getElementById('totalTrans').textContent   = Object.keys(aData.best_selling_food).length.toLocaleString();
+        document.getElementById('metricsContainer').style.display = 'block';
+
+        // Show cleaned data preview (no charts yet!)
+        hideAllSections();
+        document.getElementById('metricsContainer').style.display    = 'block';
+        document.getElementById('cleanedDataContainer').style.display = 'block';
+        renderDataTable('cleaned',
+            data.preview.slice(0, 1000),
+            Object.keys(data.preview[0] || {})
+        );
+        document.getElementById('cleanedDataRowCount').textContent = `Rows: ${data.cleaned_rows.toLocaleString()}`;
+
+        showAlert('Data cleaned successfully! Use "Generate Charts" to create visualizations.', 'success');
+    } catch (error) {
+        showAlert('Error cleaning data: ' + error.message, 'danger');
+    } finally {
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+});
+
+// ─── Event: Show Dataset Info ─────────────────────────────────────────────────
 document.getElementById('showDatasetInfoBtn').addEventListener('click', async () => {
     try {
         document.getElementById('loadingSpinner').style.display = 'block';
         hideAllSections();
-        
+
         const response = await fetch('/api/dataset-info');
         const data = await response.json();
         if (!response.ok) throw new Error(data.error);
 
-        // Update dataset info
         document.getElementById('datasetTotalRows').textContent = data.rows.toLocaleString();
         document.getElementById('datasetTotalCols').textContent = data.columns;
-        document.getElementById('datasetFileName').textContent = data.file_name;
-        document.getElementById('datasetMemory').textContent = data.memory_usage;
+        document.getElementById('datasetFileName').textContent  = data.file_name;
+        document.getElementById('datasetMemory').textContent    = data.memory_usage;
 
-        // Render column details
         const columnDetails = document.getElementById('columnDetailsContainer');
         columnDetails.innerHTML = '';
-        const cols = Object.entries(data.column_info);
-        cols.forEach(([colName, colInfo]) => {
+        Object.entries(data.column_info).forEach(([colName, colInfo]) => {
             columnDetails.innerHTML += `
                 <div class="mb-3 p-2 border rounded">
                     <strong>${colName}</strong>
                     <div class="small text-muted">
                         Type: ${colInfo.type} | Non-null: ${colInfo.non_null} | Unique: ${colInfo.unique}
                     </div>
-                </div>
-            `;
+                </div>`;
         });
 
         document.getElementById('datasetInfoContainer').style.display = 'block';
@@ -401,19 +403,19 @@ document.getElementById('showDatasetInfoBtn').addEventListener('click', async ()
     }
 });
 
-// Show Raw Data
+// ─── Event: Show Raw Data ─────────────────────────────────────────────────────
 document.getElementById('showRawDataBtn').addEventListener('click', async () => {
     try {
         document.getElementById('loadingSpinner').style.display = 'block';
         hideAllSections();
-        
+
         const response = await fetch('/api/raw-data');
         const data = await response.json();
         if (!response.ok) throw new Error(data.error);
 
         renderDataTable('raw', data.data, data.columns);
-        document.getElementById('rawDataContainer').style.display = 'block';
-        document.getElementById('rawDataRowCount').textContent = `Rows: ${data.data.length.toLocaleString()}`;
+        document.getElementById('rawDataContainer').style.display   = 'block';
+        document.getElementById('rawDataRowCount').textContent       = `Rows: ${data.data.length.toLocaleString()}`;
         showAlert('Raw data loaded!', 'success');
     } catch (error) {
         showAlert('Error loading raw data: ' + error.message, 'danger');
@@ -422,19 +424,19 @@ document.getElementById('showRawDataBtn').addEventListener('click', async () => 
     }
 });
 
-// Show Cleaned Data
+// ─── Event: Show Cleaned Data ─────────────────────────────────────────────────
 document.getElementById('showCleanedDataBtn').addEventListener('click', async () => {
     try {
         document.getElementById('loadingSpinner').style.display = 'block';
         hideAllSections();
-        
+
         const response = await fetch('/api/cleaned-data');
         const data = await response.json();
         if (!response.ok) throw new Error(data.error);
 
         renderDataTable('cleaned', data.data, data.columns);
         document.getElementById('cleanedDataContainer').style.display = 'block';
-        document.getElementById('cleanedDataRowCount').textContent = `Rows: ${data.data.length.toLocaleString()}`;
+        document.getElementById('cleanedDataRowCount').textContent     = `Rows: ${data.data.length.toLocaleString()}`;
         showAlert('Cleaned data loaded!', 'success');
     } catch (error) {
         showAlert('Error loading cleaned data: ' + error.message, 'danger');
@@ -443,18 +445,30 @@ document.getElementById('showCleanedDataBtn').addEventListener('click', async ()
     }
 });
 
-// Generate Charts
+// ─── Event: Generate Charts ───────────────────────────────────────────────────
+// This is where charts are created — ONLY when the user explicitly clicks this.
 document.getElementById('generateChartsBtn').addEventListener('click', async () => {
     try {
         document.getElementById('loadingSpinner').style.display = 'block';
         showAlert('Generating charts...', 'info');
 
-        const response = await fetch('/api/generate-charts', { method: 'POST' });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error);
+        // Make sure we have analysis data
+        if (!cachedAnalysisData) {
+            const aResp = await fetch('/api/analyze');
+            const aData = await aResp.json();
+            if (!aResp.ok) throw new Error(aData.error);
+            cachedAnalysisData = aData;
+        }
 
-        showAlert('Charts generated successfully! Click "Show Charts" to view.', 'success');
-        document.getElementById('showChartsBtn').disabled = false;
+        hideAllSections();
+        renderCharts(cachedAnalysisData);
+        renderTopItems(cachedAnalysisData);
+
+        document.getElementById('chartsContainer').style.display     = 'block';
+        document.getElementById('topItemsContainer').style.display   = 'block';
+        document.getElementById('showChartsBtn').disabled            = false;
+
+        showAlert('Charts generated from your data!', 'success');
     } catch (error) {
         showAlert('Error generating charts: ' + error.message, 'danger');
     } finally {
@@ -462,66 +476,36 @@ document.getElementById('generateChartsBtn').addEventListener('click', async () 
     }
 });
 
-// Show Charts
-document.getElementById('showChartsBtn').addEventListener('click', async () => {
-    try {
-        document.getElementById('loadingSpinner').style.display = 'block';
-        hideAllSections();
-        
-        const response = await fetch('/api/chart-data');
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error);
-
-        renderCharts(data);
-        document.getElementById('chartsContainer').style.display = 'block';
-        document.getElementById('topItemsContainer').style.display = 'block';
-        showAlert('Charts loaded!', 'success');
-    } catch (error) {
-        showAlert('Error loading charts: ' + error.message, 'danger');
-    } finally {
-        document.getElementById('loadingSpinner').style.display = 'none';
+// ─── Event: Show Charts (re-show already-generated charts) ───────────────────
+document.getElementById('showChartsBtn').addEventListener('click', () => {
+    if (!cachedAnalysisData) {
+        showAlert('Please click "Generate Charts" first.', 'warning');
+        return;
     }
+    hideAllSections();
+    // Charts are already rendered in the canvas elements; just show the containers
+    document.getElementById('chartsContainer').style.display   = 'block';
+    document.getElementById('topItemsContainer').style.display = 'block';
 });
 
-// Render data table
-function renderDataTable(type, rows, columns) {
-    const headId = `${type}DataHead`;
-    const bodyId = `${type}DataBody`;
-    const searchId = `${type}DataSearch`;
+// ─── Event: Download cleaned CSV ──────────────────────────────────────────────
+document.getElementById('downloadBtn').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/api/download-cleaned');
+        if (!response.ok) throw new Error('Download failed');
 
-    const head = document.getElementById(headId);
-    const body = document.getElementById(bodyId);
-    const searchInput = document.getElementById(searchId);
+        const blob = await response.blob();
+        const url  = window.URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = 'lagoon_sales_cleaned.csv';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
 
-    // Create header
-    head.innerHTML = '<tr>' + columns.map(col => `<th>${col}</th>`).join('') + '</tr>';
-
-    // Function to render body with filter
-    function renderBody(filteredRows) {
-        body.innerHTML = '';
-        filteredRows.forEach(row => {
-            const cells = columns.map(col => {
-                let value = row[col];
-                if (typeof value === 'number') {
-                    value = value.toFixed(2);
-                }
-                return `<td>${value || '-'}</td>`;
-            }).join('');
-            body.innerHTML += `<tr>${cells}</tr>`;
-        });
+        showAlert('Data downloaded successfully!', 'success');
+    } catch (error) {
+        showAlert('Error downloading data: ' + error.message, 'danger');
     }
-
-    renderBody(rows);
-
-    // Search functionality
-    searchInput.addEventListener('keyup', (e) => {
-        const query = e.target.value.toLowerCase();
-        const filtered = rows.filter(row => {
-            return columns.some(col => {
-                const value = String(row[col]).toLowerCase();
-                return value.includes(query);
-            });
-        });
-        renderBody(filtered);
-    });
-}
+});
