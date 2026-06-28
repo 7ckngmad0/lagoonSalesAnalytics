@@ -1,4 +1,3 @@
-// ─── State ───────────────────────────────────────────────────────────────────
 // Stores the analysis data fetched after cleaning, so Generate Charts can use it
 let cachedAnalysisData = null;
 
